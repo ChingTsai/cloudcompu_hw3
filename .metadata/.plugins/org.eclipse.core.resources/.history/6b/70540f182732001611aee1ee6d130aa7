@@ -35,7 +35,7 @@ object InvertedIdx {
 
     val cons = lines.count();
     val ids = (1 to cons.toInt);
-    val RddIds = sc.parallelize(ids, sc.defaultParallelism*10);
+    val RddIds = sc.parallelize(ids, sc.defaultParallelism);
 
     val res = RddIds.zip(lines.map(line => {
       val lineXml = scala.xml.XML.loadString(line.toString())
