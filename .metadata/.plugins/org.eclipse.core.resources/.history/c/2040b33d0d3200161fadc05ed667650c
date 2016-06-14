@@ -28,7 +28,7 @@ object InvertedIdx {
     var link =
       lines.map(line => {
         val lineXml = scala.xml.XML.loadString(line.toString())
-        (((lineXml \ "title").text.concat("&gt").concat((lineXml \ "revision" \ "text").text)));
+        (  ((lineXml \ "title").text +"&gt"+lineXml \ "revision" \ "text").text);
       }).saveAsTextFile(outputPath);
 
     sc.stop
