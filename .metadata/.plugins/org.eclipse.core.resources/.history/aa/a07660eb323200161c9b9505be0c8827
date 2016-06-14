@@ -37,7 +37,7 @@ object InvertedIdx {
       val lineXml = scala.xml.XML.loadString(line.toString())
       (((lineXml \ "title").text.concat("&gt").concat((lineXml \ "revision" \ "text").text)));
     }))
-    .zipWithUniqueId().map(x => ( x._2.toString(), x._1)).partitionBy(new HashPartitioner(sc.defaultParallelism * 3))
+    .zipWithUniqueId().map(x => ( x._2.toString(), x._1)).partitionBy(new HashPartitioner(3))
     .saveAsHadoopFile(outputPath, classOf[String], classOf[String], classOf[RDDMultipleTextOutputFormat])
 
     sc.stop

@@ -4826,3 +4826,6 @@ The release after Mars (4.5) will no longer support the deprecated usage!
 
 !ENTRY com.amazonaws.eclipse.core 1 0 2016-06-14 20:51:18.220
 !MESSAGE Found valid identity id cache us-east-1:f62c6371-0060-4c4b-bc9b-fd47b707ab71
+
+!ENTRY org.scala-ide.sdt.core 1 0 2016-06-14 21:21:15.103
+!MESSAGE Timeout while resolving hyperlink in C:\Users\SISQUAKE\workspace\cloudcompu_hw3\PageRankSp\src\main\scala\InvertedIdx.scala at: offset: 1372, length: 0
