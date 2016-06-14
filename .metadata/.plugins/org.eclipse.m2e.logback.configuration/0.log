@@ -1,0 +1,36 @@
+2016-06-14 17:03:07,998 [Worker-17] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: CloudCompu:hw1:0.0.1-SNAPSHOT @ /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/pom.xml.
+2016-06-14 17:03:09,601 [Worker-17] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /hw1/src/main/java
+2016-06-14 17:03:09,604 [Worker-17] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /hw1/src/test/java
+2016-06-14 17:03:09,745 [Worker-17] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 3 sec
+2016-06-14 17:03:09,994 [Worker-19] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: CloudCompu:hw1:0.0.1-SNAPSHOT @ /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/pom.xml.
+2016-06-14 17:03:12,115 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 17:03:12,116 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/src/main/resources
+2016-06-14 17:03:12,120 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 17:03:12,120 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/src/test/resources
+2016-06-14 17:03:13,593 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 17:03:13,593 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/src/main/resources
+2016-06-14 17:03:13,595 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 17:03:13,595 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/src/test/resources
+2016-06-14 17:05:04,280 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 17:05:04,282 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/src/main/resources
+2016-06-14 17:05:04,284 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 17:05:04,284 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/src/test/resources
+2016-06-14 17:05:45,178 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 17:05:45,178 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/src/main/resources
+2016-06-14 17:05:45,184 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 17:05:45,184 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/src/test/resources
+2016-06-14 17:06:13,592 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 17:06:13,592 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/src/main/resources
+2016-06-14 17:06:13,594 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 17:06:13,594 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/src/test/resources
+2016-06-14 18:07:35,170 [Worker-6] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: CloudCompu:hw1:0.0.1-SNAPSHOT @ /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/pom.xml.
+2016-06-14 18:07:36,705 [Worker-2] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: CloudCompu:hw1:0.0.1-SNAPSHOT @ /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/pom.xml.
+2016-06-14 18:07:38,741 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 18:07:38,741 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/src/main/resources
+2016-06-14 18:07:38,747 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 18:07:38,747 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/src/test/resources
+2016-06-14 18:07:39,813 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: CloudCompu:hw1:0.0.1-SNAPSHOT @ /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/pom.xml.
+2016-06-14 18:07:44,095 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 18:07:44,096 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/src/main/resources
+2016-06-14 18:07:44,098 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 18:07:44,098 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/hw1/src/test/resources

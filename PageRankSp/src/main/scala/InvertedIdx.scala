@@ -1,8 +1,20 @@
 import org.apache.spark.SparkConf
-import org.apache.spark.SparkContext
+
 import org.apache.hadoop.fs.FileSystem
 import org.apache.hadoop.fs.Path
 import org.apache.spark.HashPartitioner
+import org.apache.hadoop.io.NullWritable
+import org.apache.hadoop.mapred.lib.MultipleTextOutputFormat
+import org.apache.spark.SparkContext._
+import org.apache.spark.SparkContext
+
+class RDDMultipleTextOutputFormat extends MultipleTextOutputFormat[Any, Any] {
+  override def generateActualKey(key: Any, value: Any): Any =
+    NullWritable.get()
+
+  override def generateFileNameForKeyValue(key: Any, value: Any, name: String): String =
+    key.asInstanceOf[String]
+}
 
 object InvertedIdx {
   def main(args: Array[String]) {
@@ -21,15 +33,15 @@ object InvertedIdx {
 
     val lines = sc.textFile(filePath, sc.defaultParallelism * 10)
 
-    val regex = "\\[\\[(.+?)([\\|#]|\\]\\])".r;
+    val cons = lines.count();
+    val ids = (1 to cons.toInt);
+    val RddIds = sc.parallelize(ids, sc.defaultParallelism);
 
-    var st = System.nanoTime
-
-    var link =
-      lines.map(line => {
-        val lineXml = scala.xml.XML.loadString(line.toString())
-        (((lineXml \ "title").text.concat("&gt").concat((lineXml \ "revision" \ "text").text)));
-      }).saveAsTextFile(outputPath);
+    val res = RddIds.zip(lines.map(line => {
+      val lineXml = scala.xml.XML.loadString(line.toString())
+      (((lineXml \ "title").text.concat("&gt").concat((lineXml \ "revision" \ "text").text)));
+    }))
+    res.map(x => ("file" + x._1.toString() + ".txt", x._2)).partitionBy(new HashPartitioner(3)).saveAsHadoopFile(outputPath, classOf[String], classOf[String], classOf[RDDMultipleTextOutputFormat])
 
     sc.stop
   }
