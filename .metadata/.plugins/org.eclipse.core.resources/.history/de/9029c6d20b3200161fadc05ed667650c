@@ -19,7 +19,7 @@ object InvertedIdx {
     var hdfs = FileSystem.get(hadoopConf)
     try { hdfs.delete(new Path(outputPath), true) } catch { case _: Throwable => {} }
 
-    val lines = sc.textFile(filePath, sc.defaultParallelism * 10)
+    val lines = sc.textFile(filePath, sc.defaultParallelism * 5)
 
     val regex = "\\[\\[(.+?)([\\|#]|\\]\\])".r;
 
