@@ -53,3 +53,27 @@
 2016-06-14 20:46:46,382 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\main\resources
 2016-06-14 20:46:46,383 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2016-06-14 20:46:46,383 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\test\resources
+2016-06-14 22:33:27,170 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 22:33:27,173 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\main\resources
+2016-06-14 22:33:27,174 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 22:33:27,174 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\test\resources
+2016-06-14 22:33:41,800 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 22:33:41,800 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\main\resources
+2016-06-14 22:33:41,801 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 22:33:41,801 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\test\resources
+2016-06-14 22:34:13,095 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 22:34:13,096 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\main\resources
+2016-06-14 22:34:13,096 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 22:34:13,096 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\test\resources
+2016-06-14 22:36:32,424 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 22:36:32,425 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\main\resources
+2016-06-14 22:36:32,425 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 22:36:32,425 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\test\resources
+2016-06-14 22:36:42,066 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 22:36:42,066 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\main\resources
+2016-06-14 22:36:42,067 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 22:36:42,067 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\test\resources
+2016-06-14 22:43:09,804 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 22:43:09,806 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\main\resources
+2016-06-14 22:43:09,808 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-14 22:43:09,808 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\test\resources

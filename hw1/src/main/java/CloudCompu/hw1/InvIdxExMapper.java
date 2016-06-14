@@ -37,22 +37,23 @@ public class InvIdxExMapper extends
 			}
 			idx++;
 		}
-
+		String[] pageParts = value.toString().split("&gt");
+		int title_offset = pageParts[0].length();
 		HashMap<String, LinkedList<LongWritable>> tmpMap = new HashMap<String, LinkedList<LongWritable>>();
 		// Replace nonAlphabetic with space and split into token
 		Matcher matcher = Pattern.compile("\\S+").matcher(
-				value.toString().replaceAll("[^a-zA-Z]", " "));
+				pageParts[1].toString().replaceAll("[^a-zA-Z]", " "));
 		while (matcher.find()) {
 			if (tmpMap.containsKey(matcher.group())) {
 				tmpMap.get(matcher.group()).add(
-						new LongWritable(key.get() + matcher.start()));
+						new LongWritable(key.get() + matcher.start()+title_offset));
 			} else {
 				LinkedList<LongWritable> l = new LinkedList<LongWritable>();
 				/*
 				 * Store the offset of word by (this partition offset of the
 				 * file and the word offset of this partition )
 				 */
-				l.add(new LongWritable(key.get() + matcher.start()));
+				l.add(new LongWritable(key.get() + matcher.start()+title_offset));
 				tmpMap.put(matcher.group(), l);
 			}
 
