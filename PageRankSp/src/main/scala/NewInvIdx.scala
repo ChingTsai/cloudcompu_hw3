@@ -25,7 +25,7 @@ object NewInvIdx {
     val lines = sc.textFile(filePath, sc.defaultParallelism * 3)
 
    (lines.map(line => {
-  
+     
     }))
     
     sc.stop

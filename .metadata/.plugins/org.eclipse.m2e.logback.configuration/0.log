@@ -77,3 +77,15 @@
 2016-06-14 22:43:09,806 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\main\resources
 2016-06-14 22:43:09,808 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2016-06-14 22:43:09,808 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\test\resources
+2016-06-15 02:16:07,600 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-15 02:16:07,602 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\main\resources
+2016-06-15 02:16:07,603 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-15 02:16:07,603 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\test\resources
+2016-06-15 02:16:08,996 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-15 02:16:08,997 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\main\resources
+2016-06-15 02:16:08,998 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-15 02:16:08,998 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\test\resources
+2016-06-15 02:17:53,573 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-15 02:17:53,573 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\main\resources
+2016-06-15 02:17:53,574 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-06-15 02:17:53,574 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\SISQUAKE\workspace\cloudcompu_hw3\hw1\src\test\resources

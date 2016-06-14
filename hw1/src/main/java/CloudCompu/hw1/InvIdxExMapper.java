@@ -65,6 +65,7 @@ public class InvIdxExMapper extends
 			 * map.put(new Text("" + fileId), new
 			 * LongArrayWritable((LongWritable[]) e.getValue() .toArray(new
 			 * LongWritable[e.getValue().size()])));
+			 * 
 			 */
 			list.set((LongWritable[]) e.getValue().toArray(
 					new LongWritable[e.getValue().size()]));

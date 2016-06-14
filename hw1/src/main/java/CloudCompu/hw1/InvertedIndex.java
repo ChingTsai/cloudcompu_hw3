@@ -50,7 +50,7 @@ public class InvertedIndex {
 		job.setOutputValueClass(Text.class);
 
 		// set the number of reducer
-		job.setNumReduceTasks(50);
+		job.setNumReduceTasks(100);
 
 		// add input/output path
 		FileInputFormat.addInputPath(job, new Path(args[0]));
