@@ -7,72 +7,72 @@
 		revision="1.0"
 		conf="compile-internal"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20160518232712"/>
+		date="20160614135945"/>
 	<dependencies>
 		<module organisation="org.apache.spark" name="spark-mllib_2.10">
-			<revision name="1.1.0" status="release" pubdate="20140903133927" resolver="public" artresolver="public" homepage="http://spark.apache.org/" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="134">
+			<revision name="1.1.0" status="release" pubdate="20140903133927" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://spark.apache.org/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="134">
 				<license name="Apache 2.0 License" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="4563" time="801" location="/Users/SISQUAKE/.ivy2/cache/org.apache.spark/spark-mllib_2.10/ivy-1.1.0.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.apache.spark/spark-mllib_2.10/ivy-1.1.0.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/spark/spark-mllib_2.10/1.1.0/spark-mllib_2.10-1.1.0.pom"/>
+				<metadata-artifact status="no" details="" size="24844" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.apache.spark/spark-mllib_2.10/ivy-1.1.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/spark/spark-mllib_2.10/1.1.0/spark-mllib_2.10-1.1.0.pom"/>
 				<caller organisation="page-rank-spark" name="page-rank-spark_2.10" conf="compile-internal, compile, provided, optional" rev="1.1.0" rev-constraint-default="1.1.0" rev-constraint-dynamic="1.1.0" callerrev="1.0"/>
 				<artifacts>
-					<artifact name="spark-mllib_2.10" type="jar" ext="jar" status="successful" details="" size="1100246" time="6874" location="/Users/SISQUAKE/.ivy2/cache/org.apache.spark/spark-mllib_2.10/jars/spark-mllib_2.10-1.1.0.jar">
+					<artifact name="spark-mllib_2.10" type="jar" ext="jar" status="no" details="" size="1100246" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.apache.spark/spark-mllib_2.10/jars/spark-mllib_2.10-1.1.0.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/apache/spark/spark-mllib_2.10/1.1.0/spark-mllib_2.10-1.1.0.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="org.scalanlp" name="breeze_2.10">
-			<revision name="0.9" status="release" pubdate="20140809013413" resolver="public" artresolver="public" homepage="http://scalanlp.org/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="142">
+			<revision name="0.9" status="release" pubdate="20140809013413" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://scalanlp.org/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="142">
 				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="4291" time="805" location="/Users/SISQUAKE/.ivy2/cache/org.scalanlp/breeze_2.10/ivy-0.9.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.scalanlp/breeze_2.10/ivy-0.9.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scalanlp/breeze_2.10/0.9/breeze_2.10-0.9.pom"/>
+				<metadata-artifact status="no" details="" size="4699" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.scalanlp/breeze_2.10/ivy-0.9.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scalanlp/breeze_2.10/0.9/breeze_2.10-0.9.pom"/>
 				<caller organisation="org.apache.spark" name="spark-mllib_2.10" conf="default, compile, runtime, master" rev="0.9" rev-constraint-default="0.9" rev-constraint-dynamic="0.9" callerrev="1.1.0"/>
 				<artifacts>
-					<artifact name="breeze_2.10" type="jar" ext="jar" status="successful" details="" size="12351462" time="11363" location="/Users/SISQUAKE/.ivy2/cache/org.scalanlp/breeze_2.10/jars/breeze_2.10-0.9.jar">
+					<artifact name="breeze_2.10" type="jar" ext="jar" status="no" details="" size="12351462" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.scalanlp/breeze_2.10/jars/breeze_2.10-0.9.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scalanlp/breeze_2.10/0.9/breeze_2.10-0.9.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="org.spire-math" name="spire_2.10">
-			<revision name="0.7.4" status="release" pubdate="20140424232204" resolver="public" artresolver="public" homepage="http://spire-math.org" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="148">
+			<revision name="0.7.4" status="release" pubdate="20140424232204" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://spire-math.org" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="148">
 				<license name="BSD-style" url="http://opensource.org/licenses/MIT"/>
-				<metadata-artifact status="successful" details="" size="2507" time="797" location="/Users/SISQUAKE/.ivy2/cache/org.spire-math/spire_2.10/ivy-0.7.4.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.spire-math/spire_2.10/ivy-0.7.4.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/spire-math/spire_2.10/0.7.4/spire_2.10-0.7.4.pom"/>
+				<metadata-artifact status="no" details="" size="3313" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.spire-math/spire_2.10/ivy-0.7.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/spire-math/spire_2.10/0.7.4/spire_2.10-0.7.4.pom"/>
 				<caller organisation="org.scalanlp" name="breeze_2.10" conf="compile, runtime" rev="0.7.4" rev-constraint-default="0.7.4" rev-constraint-dynamic="0.7.4" callerrev="0.9"/>
 				<artifacts>
-					<artifact name="spire_2.10" type="jar" ext="jar" status="successful" details="" size="7253596" time="12043" location="/Users/SISQUAKE/.ivy2/cache/org.spire-math/spire_2.10/jars/spire_2.10-0.7.4.jar">
+					<artifact name="spire_2.10" type="jar" ext="jar" status="no" details="" size="7253596" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.spire-math/spire_2.10/jars/spire_2.10-0.7.4.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/spire-math/spire_2.10/0.7.4/spire_2.10-0.7.4.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="org.spire-math" name="spire-macros_2.10">
-			<revision name="0.7.4" status="release" pubdate="20140424231914" resolver="public" artresolver="public" homepage="http://spire-math.org" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="149">
+			<revision name="0.7.4" status="release" pubdate="20140424231914" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://spire-math.org" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="149">
 				<license name="BSD-style" url="http://opensource.org/licenses/MIT"/>
-				<metadata-artifact status="successful" details="" size="2347" time="790" location="/Users/SISQUAKE/.ivy2/cache/org.spire-math/spire-macros_2.10/ivy-0.7.4.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.spire-math/spire-macros_2.10/ivy-0.7.4.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/spire-math/spire-macros_2.10/0.7.4/spire-macros_2.10-0.7.4.pom"/>
+				<metadata-artifact status="no" details="" size="3184" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.spire-math/spire-macros_2.10/ivy-0.7.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/spire-math/spire-macros_2.10/0.7.4/spire-macros_2.10-0.7.4.pom"/>
 				<caller organisation="org.spire-math" name="spire_2.10" conf="compile, runtime" rev="0.7.4" rev-constraint-default="0.7.4" rev-constraint-dynamic="0.7.4" callerrev="0.7.4"/>
 				<artifacts>
-					<artifact name="spire-macros_2.10" type="jar" ext="jar" status="successful" details="" size="79162" time="1216" location="/Users/SISQUAKE/.ivy2/cache/org.spire-math/spire-macros_2.10/jars/spire-macros_2.10-0.7.4.jar">
+					<artifact name="spire-macros_2.10" type="jar" ext="jar" status="no" details="" size="79162" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.spire-math/spire-macros_2.10/jars/spire-macros_2.10-0.7.4.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/spire-math/spire-macros_2.10/0.7.4/spire-macros_2.10-0.7.4.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="org.scalamacros" name="quasiquotes_2.10">
-			<revision name="2.0.0" status="release" pubdate="20140417170710" resolver="public" artresolver="public" homepage="https://github.com/scalamacros/paradise" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="150">
+			<revision name="2.0.0" status="release" pubdate="20140417170710" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/scalamacros/paradise" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="150">
 				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html"/>
-				<metadata-artifact status="successful" details="" size="1841" time="778" location="/Users/SISQUAKE/.ivy2/cache/org.scalamacros/quasiquotes_2.10/ivy-2.0.0.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.scalamacros/quasiquotes_2.10/ivy-2.0.0.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0/quasiquotes_2.10-2.0.0.pom"/>
+				<metadata-artifact status="no" details="" size="2868" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.scalamacros/quasiquotes_2.10/ivy-2.0.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0/quasiquotes_2.10-2.0.0.pom"/>
 				<caller organisation="org.scalanlp" name="breeze-macros_2.10" conf="compile, runtime" rev="2.0.0-M8" rev-constraint-default="2.0.0-M8" rev-constraint-dynamic="2.0.0-M8" callerrev="0.3.1"/>
 				<caller organisation="org.spire-math" name="spire_2.10" conf="compile, runtime" rev="2.0.0" rev-constraint-default="2.0.0" rev-constraint-dynamic="2.0.0" callerrev="0.7.4"/>
 				<caller organisation="org.spire-math" name="spire-macros_2.10" conf="compile, runtime" rev="2.0.0" rev-constraint-default="2.0.0" rev-constraint-dynamic="2.0.0" callerrev="0.7.4"/>
 				<artifacts>
-					<artifact name="quasiquotes_2.10" type="jar" ext="jar" status="successful" details="" size="720997" time="2468" location="/Users/SISQUAKE/.ivy2/cache/org.scalamacros/quasiquotes_2.10/jars/quasiquotes_2.10-2.0.0.jar">
+					<artifact name="quasiquotes_2.10" type="jar" ext="jar" status="no" details="" size="720997" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.scalamacros/quasiquotes_2.10/jars/quasiquotes_2.10-2.0.0.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0/quasiquotes_2.10-2.0.0.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
-			<revision name="2.0.0-M8" status="release" pubdate="20140410060754" resolver="public" artresolver="public" evicted="latest-revision" evicted-reason="" homepage="https://github.com/scalamacros/paradise" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+			<revision name="2.0.0-M8" status="release" pubdate="20140410060754" resolver="sbt-chain" artresolver="sbt-chain" evicted="latest-revision" evicted-reason="" homepage="https://github.com/scalamacros/paradise" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
 				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html"/>
-				<metadata-artifact status="successful" details="" size="1844" time="1172" location="/Users/SISQUAKE/.ivy2/cache/org.scalamacros/quasiquotes_2.10/ivy-2.0.0-M8.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.scalamacros/quasiquotes_2.10/ivy-2.0.0-M8.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0-M8/quasiquotes_2.10-2.0.0-M8.pom"/>
+				<metadata-artifact status="no" details="" size="2871" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.scalamacros/quasiquotes_2.10/ivy-2.0.0-M8.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scalamacros/quasiquotes_2.10/2.0.0-M8/quasiquotes_2.10-2.0.0-M8.pom"/>
 				<evicted-by rev="2.0.0"/>
 				<caller organisation="org.scalanlp" name="breeze-macros_2.10" conf="compile, runtime" rev="2.0.0-M8" rev-constraint-default="2.0.0-M8" rev-constraint-dynamic="2.0.0-M8" callerrev="0.3.1"/>
 				<artifacts>
@@ -80,83 +80,83 @@
 			</revision>
 		</module>
 		<module organisation="com.github.rwl" name="jtransforms">
-			<revision name="2.4.0" status="release" pubdate="20120519220656" resolver="public" artresolver="public" homepage="http://sourceforge.net/projects/jtransforms/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="147">
+			<revision name="2.4.0" status="release" pubdate="20120519220656" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://sourceforge.net/projects/jtransforms/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="147">
 				<license name="MPL" url="http://www.mozilla.org/MPL/2.0/index.txt"/>
 				<license name="LGPL" url="http://www.gnu.org/licenses/lgpl-2.1.txt"/>
 				<license name="GPL" url="http://www.gnu.org/licenses/gpl-2.0.txt"/>
-				<metadata-artifact status="successful" details="" size="2817" time="1167" location="/Users/SISQUAKE/.ivy2/cache/com.github.rwl/jtransforms/ivy-2.4.0.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/com.github.rwl/jtransforms/ivy-2.4.0.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/github/rwl/jtransforms/2.4.0/jtransforms-2.4.0.pom"/>
+				<metadata-artifact status="no" details="" size="2991" time="0" location="/Users/SISQUAKE/.ivy2/cache/com.github.rwl/jtransforms/ivy-2.4.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/github/rwl/jtransforms/2.4.0/jtransforms-2.4.0.pom"/>
 				<caller organisation="org.scalanlp" name="breeze_2.10" conf="compile, runtime" rev="2.4.0" rev-constraint-default="2.4.0" rev-constraint-dynamic="2.4.0" callerrev="0.9"/>
 				<artifacts>
-					<artifact name="jtransforms" type="jar" ext="jar" status="successful" details="" size="764569" time="2159" location="/Users/SISQUAKE/.ivy2/cache/com.github.rwl/jtransforms/jars/jtransforms-2.4.0.jar">
+					<artifact name="jtransforms" type="jar" ext="jar" status="no" details="" size="764569" time="0" location="/Users/SISQUAKE/.ivy2/cache/com.github.rwl/jtransforms/jars/jtransforms-2.4.0.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/github/rwl/jtransforms/2.4.0/jtransforms-2.4.0.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="net.sf.opencsv" name="opencsv">
-			<revision name="2.3" status="release" pubdate="20110728130018" resolver="public" artresolver="public" homepage="http://opencsv.sf.net" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="146">
+			<revision name="2.3" status="release" pubdate="20110728130018" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://opencsv.sf.net" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="146">
 				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-				<metadata-artifact status="successful" details="" size="5445" time="791" location="/Users/SISQUAKE/.ivy2/cache/net.sf.opencsv/opencsv/ivy-2.3.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/net.sf.opencsv/opencsv/ivy-2.3.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/net/sf/opencsv/opencsv/2.3/opencsv-2.3.pom"/>
+				<metadata-artifact status="no" details="" size="3354" time="0" location="/Users/SISQUAKE/.ivy2/cache/net.sf.opencsv/opencsv/ivy-2.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/net/sf/opencsv/opencsv/2.3/opencsv-2.3.pom"/>
 				<caller organisation="org.scalanlp" name="breeze_2.10" conf="compile, runtime" rev="2.3" rev-constraint-default="2.3" rev-constraint-dynamic="2.3" callerrev="0.9"/>
 				<artifacts>
-					<artifact name="opencsv" type="jar" ext="jar" status="successful" details="" size="19827" time="1578" location="/Users/SISQUAKE/.ivy2/cache/net.sf.opencsv/opencsv/jars/opencsv-2.3.jar">
+					<artifact name="opencsv" type="jar" ext="jar" status="no" details="" size="19827" time="0" location="/Users/SISQUAKE/.ivy2/cache/net.sf.opencsv/opencsv/jars/opencsv-2.3.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/net/sf/opencsv/opencsv/2.3/opencsv-2.3.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="com.github.fommil.netlib" name="core">
-			<revision name="1.1.2" status="release" pubdate="20131126195411" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="144">
+			<revision name="1.1.2" status="release" pubdate="20131126195411" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="144">
 				<license name="BSD 3 Clause" url="http://opensource.org/licenses/BSD-3-Clause"/>
-				<metadata-artifact status="successful" details="" size="5427" time="787" location="/Users/SISQUAKE/.ivy2/cache/com.github.fommil.netlib/core/ivy-1.1.2.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/com.github.fommil.netlib/core/ivy-1.1.2.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/github/fommil/netlib/core/1.1.2/core-1.1.2.pom"/>
+				<metadata-artifact status="no" details="" size="4893" time="0" location="/Users/SISQUAKE/.ivy2/cache/com.github.fommil.netlib/core/ivy-1.1.2.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/github/fommil/netlib/core/1.1.2/core-1.1.2.pom"/>
 				<caller organisation="org.scalanlp" name="breeze_2.10" conf="compile, runtime" rev="1.1.2" rev-constraint-default="1.1.2" rev-constraint-dynamic="1.1.2" callerrev="0.9"/>
 				<artifacts>
-					<artifact name="core" type="jar" ext="jar" status="successful" details="" size="164422" time="2100" location="/Users/SISQUAKE/.ivy2/cache/com.github.fommil.netlib/core/jars/core-1.1.2.jar">
+					<artifact name="core" type="jar" ext="jar" status="no" details="" size="164422" time="0" location="/Users/SISQUAKE/.ivy2/cache/com.github.fommil.netlib/core/jars/core-1.1.2.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/github/fommil/netlib/core/1.1.2/core-1.1.2.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="org.scalanlp" name="breeze-macros_2.10">
-			<revision name="0.3.1" status="release" pubdate="20140424141004" resolver="public" artresolver="public" homepage="http://scalanlp.org/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="143">
+			<revision name="0.3.1" status="release" pubdate="20140424141004" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://scalanlp.org/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="143">
 				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="2365" time="800" location="/Users/SISQUAKE/.ivy2/cache/org.scalanlp/breeze-macros_2.10/ivy-0.3.1.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.scalanlp/breeze-macros_2.10/ivy-0.3.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scalanlp/breeze-macros_2.10/0.3.1/breeze-macros_2.10-0.3.1.pom"/>
+				<metadata-artifact status="no" details="" size="3303" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.scalanlp/breeze-macros_2.10/ivy-0.3.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scalanlp/breeze-macros_2.10/0.3.1/breeze-macros_2.10-0.3.1.pom"/>
 				<caller organisation="org.scalanlp" name="breeze_2.10" conf="compile, runtime" rev="0.3.1" rev-constraint-default="0.3.1" rev-constraint-dynamic="0.3.1" callerrev="0.9"/>
 				<artifacts>
-					<artifact name="breeze-macros_2.10" type="jar" ext="jar" status="successful" details="" size="118419" time="811" location="/Users/SISQUAKE/.ivy2/cache/org.scalanlp/breeze-macros_2.10/jars/breeze-macros_2.10-0.3.1.jar">
+					<artifact name="breeze-macros_2.10" type="jar" ext="jar" status="no" details="" size="118419" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.scalanlp/breeze-macros_2.10/jars/breeze-macros_2.10-0.3.1.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scalanlp/breeze-macros_2.10/0.3.1/breeze-macros_2.10-0.3.1.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="org.jblas" name="jblas">
-			<revision name="1.2.3" status="release" pubdate="20130213222349" resolver="public" artresolver="public" homepage="http://jblas.org/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="141">
+			<revision name="1.2.3" status="release" pubdate="20130213222349" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://jblas.org/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="141">
 				<license name="BSD 3-clause style license" url="http://opensource.org/licenses/BSD-3-Clause"/>
-				<metadata-artifact status="successful" details="" size="3875" time="2354" location="/Users/SISQUAKE/.ivy2/cache/org.jblas/jblas/ivy-1.2.3.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.jblas/jblas/ivy-1.2.3.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/jblas/jblas/1.2.3/jblas-1.2.3.pom"/>
+				<metadata-artifact status="no" details="" size="3252" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.jblas/jblas/ivy-1.2.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/jblas/jblas/1.2.3/jblas-1.2.3.pom"/>
 				<caller organisation="org.apache.spark" name="spark-mllib_2.10" conf="default, compile, runtime, master" rev="1.2.3" rev-constraint-default="1.2.3" rev-constraint-dynamic="1.2.3" callerrev="1.1.0"/>
 				<artifacts>
-					<artifact name="jblas" type="jar" ext="jar" status="successful" details="" size="7487233" time="11147" location="/Users/SISQUAKE/.ivy2/cache/org.jblas/jblas/jars/jblas-1.2.3.jar">
+					<artifact name="jblas" type="jar" ext="jar" status="no" details="" size="7487233" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.jblas/jblas/jars/jblas-1.2.3.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/jblas/jblas/1.2.3/jblas-1.2.3.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="org.apache.spark" name="spark-streaming_2.10">
-			<revision name="1.1.0" status="release" pubdate="20140903133720" resolver="public" artresolver="public" homepage="http://spark.apache.org/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="135">
+			<revision name="1.1.0" status="release" pubdate="20140903133720" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://spark.apache.org/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="135">
 				<license name="Apache 2.0 License" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="4127" time="797" location="/Users/SISQUAKE/.ivy2/cache/org.apache.spark/spark-streaming_2.10/ivy-1.1.0.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.apache.spark/spark-streaming_2.10/ivy-1.1.0.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/spark/spark-streaming_2.10/1.1.0/spark-streaming_2.10-1.1.0.pom"/>
+				<metadata-artifact status="no" details="" size="24169" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.apache.spark/spark-streaming_2.10/ivy-1.1.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/spark/spark-streaming_2.10/1.1.0/spark-streaming_2.10-1.1.0.pom"/>
 				<caller organisation="org.apache.spark" name="spark-mllib_2.10" conf="default, compile, runtime, master" rev="1.1.0" rev-constraint-default="1.1.0" rev-constraint-dynamic="1.1.0" callerrev="1.1.0"/>
 				<artifacts>
-					<artifact name="spark-streaming_2.10" type="jar" ext="jar" status="successful" details="" size="1087871" time="2126" location="/Users/SISQUAKE/.ivy2/cache/org.apache.spark/spark-streaming_2.10/jars/spark-streaming_2.10-1.1.0.jar">
+					<artifact name="spark-streaming_2.10" type="jar" ext="jar" status="no" details="" size="1087871" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.apache.spark/spark-streaming_2.10/jars/spark-streaming_2.10-1.1.0.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/apache/spark/spark-streaming_2.10/1.1.0/spark-streaming_2.10-1.1.0.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="org.apache.spark" name="spark-core_2.10">
-			<revision name="1.1.0" status="release" pubdate="20140903133242" resolver="public" artresolver="public" evicted="latest-revision" evicted-reason="" homepage="http://spark.apache.org/" downloaded="true" searched="true" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="-1">
+			<revision name="1.1.0" status="release" pubdate="20140903133242" resolver="sbt-chain" artresolver="sbt-chain" evicted="latest-revision" evicted-reason="" homepage="http://spark.apache.org/" downloaded="false" searched="false" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="-1">
 				<license name="Apache 2.0 License" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="11022" time="789" location="/Users/SISQUAKE/.ivy2/cache/org.apache.spark/spark-core_2.10/ivy-1.1.0.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.apache.spark/spark-core_2.10/ivy-1.1.0.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/spark/spark-core_2.10/1.1.0/spark-core_2.10-1.1.0.pom"/>
+				<metadata-artifact status="no" details="" size="31962" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.apache.spark/spark-core_2.10/ivy-1.1.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/spark/spark-core_2.10/1.1.0/spark-core_2.10-1.1.0.pom"/>
 				<evicted-by rev="1.6.1"/>
 				<caller organisation="org.apache.spark" name="spark-streaming_2.10" conf="compile, runtime" rev="1.1.0" rev-constraint-default="1.1.0" rev-constraint-dynamic="1.1.0" callerrev="1.1.0"/>
 				<caller organisation="org.apache.spark" name="spark-mllib_2.10" conf="default, compile, runtime, master" rev="1.1.0" rev-constraint-default="1.1.0" rev-constraint-dynamic="1.1.0" callerrev="1.1.0"/>
@@ -178,66 +178,66 @@
 			</revision>
 		</module>
 		<module organisation="org.eclipse.jetty" name="jetty-server">
-			<revision name="8.1.14.v20131031" status="release" pubdate="20131031234113" resolver="public" artresolver="public" homepage="http://www.eclipse.org/jetty" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="136">
+			<revision name="8.1.14.v20131031" status="release" pubdate="20131031234113" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/jetty" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="136">
 				<license name="Apache Software License - Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
 				<license name="Eclipse Public License - Version 1.0" url="http://www.eclipse.org/org/documents/epl-v10.php"/>
-				<metadata-artifact status="successful" details="" size="3780" time="793" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-server/ivy-8.1.14.v20131031.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-server/ivy-8.1.14.v20131031.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-server/8.1.14.v20131031/jetty-server-8.1.14.v20131031.pom"/>
+				<metadata-artifact status="no" details="" size="8037" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-server/ivy-8.1.14.v20131031.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-server/8.1.14.v20131031/jetty-server-8.1.14.v20131031.pom"/>
 				<caller organisation="org.apache.spark" name="spark-streaming_2.10" conf="compile, runtime" rev="8.1.14.v20131031" rev-constraint-default="8.1.14.v20131031" rev-constraint-dynamic="8.1.14.v20131031" callerrev="1.1.0"/>
 				<caller organisation="org.apache.spark" name="spark-mllib_2.10" conf="default, compile, runtime, master" rev="8.1.14.v20131031" rev-constraint-default="8.1.14.v20131031" rev-constraint-dynamic="8.1.14.v20131031" callerrev="1.1.0"/>
 				<artifacts>
-					<artifact name="jetty-server" type="jar" ext="jar" status="successful" details="" size="357704" time="2435" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-server/jars/jetty-server-8.1.14.v20131031.jar">
+					<artifact name="jetty-server" type="jar" ext="jar" status="no" details="" size="357704" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-server/jars/jetty-server-8.1.14.v20131031.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-server/8.1.14.v20131031/jetty-server-8.1.14.v20131031.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="org.eclipse.jetty" name="jetty-http">
-			<revision name="8.1.14.v20131031" status="release" pubdate="20131031233713" resolver="public" artresolver="public" homepage="http://www.eclipse.org/jetty" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="138">
+			<revision name="8.1.14.v20131031" status="release" pubdate="20131031233713" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/jetty" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="138">
 				<license name="Apache Software License - Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
 				<license name="Eclipse Public License - Version 1.0" url="http://www.eclipse.org/org/documents/epl-v10.php"/>
-				<metadata-artifact status="successful" details="" size="2641" time="796" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-http/ivy-8.1.14.v20131031.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-http/ivy-8.1.14.v20131031.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-http/8.1.14.v20131031/jetty-http-8.1.14.v20131031.pom"/>
+				<metadata-artifact status="no" details="" size="7476" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-http/ivy-8.1.14.v20131031.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-http/8.1.14.v20131031/jetty-http-8.1.14.v20131031.pom"/>
 				<caller organisation="org.eclipse.jetty" name="jetty-server" conf="compile, runtime" rev="8.1.14.v20131031" rev-constraint-default="8.1.14.v20131031" rev-constraint-dynamic="8.1.14.v20131031" callerrev="8.1.14.v20131031"/>
 				<artifacts>
-					<artifact name="jetty-http" type="jar" ext="jar" status="successful" details="" size="96122" time="6977" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-http/jars/jetty-http-8.1.14.v20131031.jar">
+					<artifact name="jetty-http" type="jar" ext="jar" status="no" details="" size="96122" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-http/jars/jetty-http-8.1.14.v20131031.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-http/8.1.14.v20131031/jetty-http-8.1.14.v20131031.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="org.eclipse.jetty" name="jetty-io">
-			<revision name="8.1.14.v20131031" status="release" pubdate="20131031233655" resolver="public" artresolver="public" homepage="http://www.eclipse.org/jetty" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="139">
+			<revision name="8.1.14.v20131031" status="release" pubdate="20131031233655" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/jetty" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="139">
 				<license name="Apache Software License - Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
 				<license name="Eclipse Public License - Version 1.0" url="http://www.eclipse.org/org/documents/epl-v10.php"/>
-				<metadata-artifact status="successful" details="" size="2146" time="789" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-io/ivy-8.1.14.v20131031.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-io/ivy-8.1.14.v20131031.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-io/8.1.14.v20131031/jetty-io-8.1.14.v20131031.pom"/>
+				<metadata-artifact status="no" details="" size="7332" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-io/ivy-8.1.14.v20131031.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-io/8.1.14.v20131031/jetty-io-8.1.14.v20131031.pom"/>
 				<caller organisation="org.eclipse.jetty" name="jetty-http" conf="compile, runtime" rev="8.1.14.v20131031" rev-constraint-default="8.1.14.v20131031" rev-constraint-dynamic="8.1.14.v20131031" callerrev="8.1.14.v20131031"/>
 				<artifacts>
-					<artifact name="jetty-io" type="jar" ext="jar" status="successful" details="" size="104219" time="1361" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-io/jars/jetty-io-8.1.14.v20131031.jar">
+					<artifact name="jetty-io" type="jar" ext="jar" status="no" details="" size="104219" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-io/jars/jetty-io-8.1.14.v20131031.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-io/8.1.14.v20131031/jetty-io-8.1.14.v20131031.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="org.eclipse.jetty" name="jetty-continuation">
-			<revision name="8.1.14.v20131031" status="release" pubdate="20131031233728" resolver="public" artresolver="public" homepage="http://www.eclipse.org/jetty" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="137">
+			<revision name="8.1.14.v20131031" status="release" pubdate="20131031233728" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/jetty" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="137">
 				<license name="Apache Software License - Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
 				<license name="Eclipse Public License - Version 1.0" url="http://www.eclipse.org/org/documents/epl-v10.php"/>
-				<metadata-artifact status="successful" details="" size="2735" time="798" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-continuation/ivy-8.1.14.v20131031.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-continuation/ivy-8.1.14.v20131031.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-continuation/8.1.14.v20131031/jetty-continuation-8.1.14.v20131031.pom"/>
+				<metadata-artifact status="no" details="" size="7425" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-continuation/ivy-8.1.14.v20131031.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-continuation/8.1.14.v20131031/jetty-continuation-8.1.14.v20131031.pom"/>
 				<caller organisation="org.eclipse.jetty" name="jetty-server" conf="compile, runtime" rev="8.1.14.v20131031" rev-constraint-default="8.1.14.v20131031" rev-constraint-dynamic="8.1.14.v20131031" callerrev="8.1.14.v20131031"/>
 				<artifacts>
-					<artifact name="jetty-continuation" type="jar" ext="jar" status="successful" details="" size="21162" time="1868" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-continuation/jars/jetty-continuation-8.1.14.v20131031.jar">
+					<artifact name="jetty-continuation" type="jar" ext="jar" status="no" details="" size="21162" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-continuation/jars/jetty-continuation-8.1.14.v20131031.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-continuation/8.1.14.v20131031/jetty-continuation-8.1.14.v20131031.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="org.eclipse.jetty" name="jetty-util">
-			<revision name="8.1.14.v20131031" status="release" pubdate="20131031233557" resolver="public" artresolver="public" homepage="http://www.eclipse.org/jetty" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="140">
+			<revision name="8.1.14.v20131031" status="release" pubdate="20131031233557" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/jetty" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="140">
 				<license name="Apache Software License - Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
 				<license name="Eclipse Public License - Version 1.0" url="http://www.eclipse.org/org/documents/epl-v10.php"/>
-				<metadata-artifact status="successful" details="" size="3434" time="802" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-util/ivy-8.1.14.v20131031.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-util/ivy-8.1.14.v20131031.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-util/8.1.14.v20131031/jetty-util-8.1.14.v20131031.pom"/>
+				<metadata-artifact status="no" details="" size="7708" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-util/ivy-8.1.14.v20131031.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-util/8.1.14.v20131031/jetty-util-8.1.14.v20131031.pom"/>
 				<caller organisation="org.eclipse.jetty" name="jetty-io" conf="compile, runtime" rev="8.1.14.v20131031" rev-constraint-default="8.1.14.v20131031" rev-constraint-dynamic="8.1.14.v20131031" callerrev="8.1.14.v20131031"/>
 				<artifacts>
-					<artifact name="jetty-util" type="jar" ext="jar" status="successful" details="" size="287680" time="1175" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-util/jars/jetty-util-8.1.14.v20131031.jar">
+					<artifact name="jetty-util" type="jar" ext="jar" status="no" details="" size="287680" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.eclipse.jetty/jetty-util/jars/jetty-util-8.1.14.v20131031.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-util/8.1.14.v20131031/jetty-util-8.1.14.v20131031.jar"/>
 					</artifact>
 				</artifacts>
@@ -537,9 +537,9 @@
 			</revision>
 		</module>
 		<module organisation="io.netty" name="netty-all">
-			<revision name="4.0.23.Final" status="release" pubdate="20140816020640" resolver="public" artresolver="public" evicted="latest-revision" evicted-reason="" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+			<revision name="4.0.23.Final" status="release" pubdate="20140816020640" resolver="sbt-chain" artresolver="sbt-chain" evicted="latest-revision" evicted-reason="" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
 				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
-				<metadata-artifact status="successful" details="" size="17244" time="789" location="/Users/SISQUAKE/.ivy2/cache/io.netty/netty-all/ivy-4.0.23.Final.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/io.netty/netty-all/ivy-4.0.23.Final.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/netty-all/4.0.23.Final/netty-all-4.0.23.Final.pom"/>
+				<metadata-artifact status="no" details="" size="14108" time="0" location="/Users/SISQUAKE/.ivy2/cache/io.netty/netty-all/ivy-4.0.23.Final.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/netty-all/4.0.23.Final/netty-all-4.0.23.Final.pom"/>
 				<evicted-by rev="4.0.29.Final"/>
 				<caller organisation="org.apache.hadoop" name="hadoop-hdfs" conf="compile, runtime" rev="4.0.23.Final" rev-constraint-default="4.0.23.Final" rev-constraint-dynamic="4.0.23.Final" callerrev="2.7.2"/>
 				<caller organisation="org.apache.spark" name="spark-core_2.10" conf="default, compile, runtime, master" rev="4.0.29.Final" rev-constraint-default="4.0.29.Final" rev-constraint-dynamic="4.0.29.Final" callerrev="1.6.1"/>
@@ -633,7 +633,7 @@
 				</artifacts>
 			</revision>
 			<revision name="2.4.0" status="release" pubdate="20140206070911" resolver="sbt-chain" artresolver="sbt-chain" evicted="latest-revision" evicted-reason="" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
-				<license name="The Apache Software License, Version 2.0" url="file:///Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw2/PageRankSp/LICENSE"/>
+				<license name="The Apache Software License, Version 2.0" url="file:///Users/SISQUAKE/workspace/CloudCompu/cloudcompu_hw3/PageRankSp/LICENSE"/>
 				<metadata-artifact status="no" details="" size="7627" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.apache.curator/curator-recipes/ivy-2.4.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/curator/curator-recipes/2.4.0/curator-recipes-2.4.0.pom"/>
 				<evicted-by rev="2.7.1"/>
 				<caller organisation="org.apache.hadoop" name="hadoop-common" conf="compile, runtime" rev="2.7.1" rev-constraint-default="2.7.1" rev-constraint-dynamic="2.7.1" callerrev="2.7.2"/>
@@ -1426,10 +1426,10 @@
 			</revision>
 		</module>
 		<module organisation="com.fasterxml.jackson.core" name="jackson-databind">
-			<revision name="2.3.1" status="release" pubdate="20131228102912" resolver="public" artresolver="public" evicted="latest-revision" evicted-reason="" homepage="http://wiki.fasterxml.com/JacksonHome" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+			<revision name="2.3.1" status="release" pubdate="20131228102912" resolver="sbt-chain" artresolver="sbt-chain" evicted="latest-revision" evicted-reason="" homepage="http://wiki.fasterxml.com/JacksonHome" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
 				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
 				<license name="GNU Lesser General Public License, Version 2.1" url="http://www.gnu.org/licenses/lgpl-2.1.html"/>
-				<metadata-artifact status="successful" details="" size="5928" time="790" location="/Users/SISQUAKE/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/ivy-2.3.1.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/ivy-2.3.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.3.1/jackson-databind-2.3.1.pom"/>
+				<metadata-artifact status="no" details="" size="7616" time="0" location="/Users/SISQUAKE/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/ivy-2.3.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.3.1/jackson-databind-2.3.1.pom"/>
 				<evicted-by rev="2.4.4"/>
 				<caller organisation="org.json4s" name="json4s-jackson_2.10" conf="compile, runtime" rev="2.3.1" rev-constraint-default="2.3.1" rev-constraint-dynamic="2.3.1" callerrev="3.2.10"/>
 				<artifacts>
@@ -1514,12 +1514,12 @@
 			</revision>
 		</module>
 		<module organisation="net.sourceforge.f2j" name="arpack_combined_all">
-			<revision name="0.1" status="release" pubdate="20130709122740" resolver="public" artresolver="public" homepage="http://f2j.sourceforge.net" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="145">
+			<revision name="0.1" status="release" pubdate="20130709122740" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://f2j.sourceforge.net" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="145">
 				<license name="The BSD License" url="http://www.opensource.org/licenses/bsd-license.php"/>
-				<metadata-artifact status="successful" details="" size="1338" time="792" location="/Users/SISQUAKE/.ivy2/cache/net.sourceforge.f2j/arpack_combined_all/ivy-0.1.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/net.sourceforge.f2j/arpack_combined_all/ivy-0.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/net/sourceforge/f2j/arpack_combined_all/0.1/arpack_combined_all-0.1.pom"/>
+				<metadata-artifact status="no" details="" size="2567" time="0" location="/Users/SISQUAKE/.ivy2/cache/net.sourceforge.f2j/arpack_combined_all/ivy-0.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/net/sourceforge/f2j/arpack_combined_all/0.1/arpack_combined_all-0.1.pom"/>
 				<caller organisation="org.scalanlp" name="breeze_2.10" conf="compile, runtime" rev="0.1" rev-constraint-default="0.1" rev-constraint-dynamic="0.1" callerrev="0.9"/>
 				<artifacts>
-					<artifact name="arpack_combined_all" type="jar" ext="jar" status="successful" details="" size="1194003" time="2590" location="/Users/SISQUAKE/.ivy2/cache/net.sourceforge.f2j/arpack_combined_all/jars/arpack_combined_all-0.1.jar">
+					<artifact name="arpack_combined_all" type="jar" ext="jar" status="no" details="" size="1194003" time="0" location="/Users/SISQUAKE/.ivy2/cache/net.sourceforge.f2j/arpack_combined_all/jars/arpack_combined_all-0.1.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/net/sourceforge/f2j/arpack_combined_all/0.1/arpack_combined_all-0.1.jar"/>
 					</artifact>
 				</artifacts>
@@ -1929,9 +1929,9 @@
 			</revision>
 		</module>
 		<module organisation="org.slf4j" name="slf4j-api">
-			<revision name="1.7.5" status="release" pubdate="20130326045215" resolver="public" artresolver="public" evicted="latest-revision" evicted-reason="" homepage="http://www.slf4j.org" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+			<revision name="1.7.5" status="release" pubdate="20130326045215" resolver="sbt-chain" artresolver="sbt-chain" evicted="latest-revision" evicted-reason="" homepage="http://www.slf4j.org" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
 				<license name="MIT License" url="http://www.opensource.org/licenses/mit-license.php"/>
-				<metadata-artifact status="successful" details="" size="2689" time="789" location="/Users/SISQUAKE/.ivy2/cache/org.slf4j/slf4j-api/ivy-1.7.5.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.slf4j/slf4j-api/ivy-1.7.5.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.pom"/>
+				<metadata-artifact status="no" details="" size="4383" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.slf4j/slf4j-api/ivy-1.7.5.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.pom"/>
 				<evicted-by rev="1.7.10"/>
 				<caller organisation="org.apache.directory.api" name="api-asn1-api" conf="compile, runtime" rev="1.7.5" rev-constraint-default="1.7.5" rev-constraint-dynamic="1.7.5" callerrev="1.0.0-M20"/>
 				<caller organisation="com.typesafe.akka" name="akka-slf4j_2.10" conf="compile, runtime" rev="1.7.5" rev-constraint-default="1.7.5" rev-constraint-dynamic="1.7.5" callerrev="2.3.11"/>
@@ -2252,10 +2252,9 @@
 			</revision>
 		</module>
 		<module organisation="org.scala-lang" name="scala-library">
-			<revision name="2.10.4" status="release" pubdate="20140319054629" resolver="public" artresolver="public" evicted="latest-revision" evicted-reason="" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.10.4/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
-				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html
-         "/>
-				<metadata-artifact status="successful" details="" size="2044" time="1589" location="/Users/SISQUAKE/.ivy2/cache/org.scala-lang/scala-library/ivy-2.10.4.xml" searched="true" original-local-location="/Users/SISQUAKE/.ivy2/cache/org.scala-lang/scala-library/ivy-2.10.4.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.4/scala-library-2.10.4.pom"/>
+			<revision name="2.10.4" status="release" pubdate="20140319054629" resolver="sbt-chain" artresolver="sbt-chain" evicted="latest-revision" evicted-reason="" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.10.4/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html          "/>
+				<metadata-artifact status="no" details="" size="2669" time="0" location="/Users/SISQUAKE/.ivy2/cache/org.scala-lang/scala-library/ivy-2.10.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.4/scala-library-2.10.4.pom"/>
 				<evicted-by rev="2.10.5"/>
 				<caller organisation="com.twitter" name="chill_2.10" conf="compile, runtime" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.5.0"/>
 				<caller organisation="com.typesafe.akka" name="akka-slf4j_2.10" conf="compile, runtime" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="2.3.11"/>

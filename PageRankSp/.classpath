@@ -151,6 +151,5 @@
 	<classpathentry kind="lib" path="/Users/SISQUAKE/.ivy2/cache/org.spire-math/spire-macros_2.10/jars/spire-macros_2.10-0.7.4.jar"/>
 	<classpathentry kind="lib" path="/Users/SISQUAKE/.ivy2/cache/org.scalamacros/quasiquotes_2.10/jars/quasiquotes_2.10-2.0.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/Users/SISQUAKE/workspace/NetDB/Spark-mllib/MLlib/spark-mllib_2.11-1.6.1-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
