@@ -33,7 +33,7 @@ public class InvIdxExReducer extends
 		for (LongArrayWritable val : values) {
 			LongWritable[] offsets = (LongWritable[]) val.toArray();
 			detString.append(";").append(
-					val.getFileId() + " " + offsets.length + " [");
+					val.getFileId() + "&gt" + val.getFileId() + " " + offsets.length + " [");
 			Arrays.sort(offsets);
 			detString.append(offsets[0].get());
 			for (int i = 1; i < offsets.length; i++) {

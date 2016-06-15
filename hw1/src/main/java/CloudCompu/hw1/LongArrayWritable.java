@@ -14,6 +14,15 @@ public class LongArrayWritable extends ArrayWritable {
 	 * java.lang.NoSuchMethodException X.X.X.<init>()
 	 */
 	private int fileId = 0;
+	private String title;
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getTitle() {
+		return this.title;
+	}
 
 	public void setFileId(int id) {
 		this.fileId = id;
@@ -37,6 +46,7 @@ public class LongArrayWritable extends ArrayWritable {
 		super.write(out);
 
 		out.writeInt(fileId);
+		out.writeUTF(title);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -45,5 +55,6 @@ public class LongArrayWritable extends ArrayWritable {
 		super.readFields(in);
 
 		this.fileId = in.readInt();
+		this.title = in.readUTF();
 	}
 }

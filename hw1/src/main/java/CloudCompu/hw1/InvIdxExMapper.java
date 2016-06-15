@@ -41,8 +41,7 @@ public class InvIdxExMapper extends
 		int title_offset = pageParts[0].length();
 		HashMap<String, LinkedList<LongWritable>> tmpMap = new HashMap<String, LinkedList<LongWritable>>();
 		// Replace nonAlphabetic with space and split into token
-		Matcher matcher = Pattern.compile("\\S+").matcher(
-				pageParts[1].toString().replaceAll("[^a-zA-Z]", " "));
+		Matcher matcher = Pattern.compile("([A-Za -z]+)").matcher(pageParts[1]);
 		while (matcher.find()) {
 			if (tmpMap.containsKey(matcher.group())) {
 				tmpMap.get(matcher.group()).add(
@@ -60,7 +59,7 @@ public class InvIdxExMapper extends
 		}
 
 		for (Entry<String, LinkedList<LongWritable>> e : tmpMap.entrySet()) {
-			word.set(e.getKey() + "_" + fileId);
+			word.set(e.getKey() + "_" + pageParts[0]);
 			/*
 			 * map.put(new Text("" + fileId), new
 			 * LongArrayWritable((LongWritable[]) e.getValue() .toArray(new
@@ -70,6 +69,7 @@ public class InvIdxExMapper extends
 			list.set((LongWritable[]) e.getValue().toArray(
 					new LongWritable[e.getValue().size()]));
 			list.setFileId(fileId);
+			list.setTitle(pageParts[0]);
 			context.write(word, list);
 		}
 
