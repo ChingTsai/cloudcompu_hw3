@@ -25,8 +25,8 @@ object NewInvIdx {
     val lines = sc.textFile(filePath, sc.defaultParallelism * 3)
 
    (lines.map(line => {
-     
-    }))
+     line.concat("4")
+    })).saveAsTextFile(outputPath)
     
     sc.stop
   }
