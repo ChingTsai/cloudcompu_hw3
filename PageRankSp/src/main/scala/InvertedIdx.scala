@@ -32,9 +32,9 @@ object InvertedIdx {
       ((lineXml \ "title").text, ((lineXml \ "revision" \ "text").text));
     }))
       .zipWithUniqueId().map(x => (x._2.toString(), x._1)).partitionBy(new HashPartitioner(sc.defaultParallelism * 3))
-    res.map(x => (x._1, x._2._2)).saveAsTextFile(outputPath);
-    res.map(x => (x._1, x._2._1)).saveAsTextFile("Hw3/ids2title");
-    res.map(x => (x._2._1, x._1)).saveAsTextFile("Hw3/title2ids");
+    res.map(x => (x._1 + "&gt" + x._2._2)).saveAsTextFile(outputPath);
+    res.map(x => (x._1 + "&gt" + x._2._1)).saveAsTextFile("Hw3/ids2title");
+    res.map(x => (x._2._1 + "&gt" + x._1)).saveAsTextFile("Hw3/title2ids");
 
     sc.stop
   }
