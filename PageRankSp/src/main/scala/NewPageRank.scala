@@ -81,7 +81,7 @@ object NewPageRank {
     }
 
     val res = rddPR;
-    res.sortBy({ case (page, pr) => (-pr, page) }, true, sc.defaultParallelism * 5).map(x => x._1 + "\t" + x._2).saveAsTextFile(outputPath);
+    res.sortBy({ case (page, pr) => (-pr, page) }, true, sc.defaultParallelism * 5).map(x => x._1 + "|" + x._2).saveAsTextFile(outputPath);
     
     sc.stop
   }
