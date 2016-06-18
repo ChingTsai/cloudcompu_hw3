@@ -8,7 +8,6 @@ import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD.rddToPairRDDFunctions
 
-
 object InvertedIdx {
   def main(args: Array[String]) {
 
@@ -24,17 +23,19 @@ object InvertedIdx {
     var hdfs = FileSystem.get(hadoopConf)
     try { hdfs.delete(new Path(outputPath), true) } catch { case _: Throwable => {} }
     try { hdfs.delete(new Path("Hw3/ids2title"), true) } catch { case _: Throwable => {} }
-    
+    try { hdfs.delete(new Path("Hw3/title2ids"), true) } catch { case _: Throwable => {} }
+
     val lines = sc.textFile(filePath, sc.defaultParallelism * 3)
 
-   val res =  (lines.map(line => {
+    val res = (lines.map(line => {
       val lineXml = scala.xml.XML.loadString(line.toString())
-      ((lineXml \ "title").text,((lineXml \ "revision" \ "text").text));
+      ((lineXml \ "title").text, ((lineXml \ "revision" \ "text").text));
     }))
-    .zipWithUniqueId().map(x => ( x._2.toString(), x._1)).partitionBy(new HashPartitioner(sc.defaultParallelism * 3))
-    res.map(x => (x._1,x._2._2)).saveAsHadoopFile(outputPath,classOf[Text],classOf[Text],classOf[TextOutputFormat[Text,Text]])
-    res.map(x=>(x._1,x._2._1)).saveAsHadoopFile("Hw3/ids2title",classOf[Text],classOf[Text],classOf[TextOutputFormat[Text,Text]])
-    
+      .zipWithUniqueId().map(x => (x._2.toString(), x._1)).partitionBy(new HashPartitioner(sc.defaultParallelism * 3))
+    res.map(x => (x._1, x._2._2)).saveAsTextFile(outputPath);
+    res.map(x => (x._1, x._2._1)).saveAsTextFile("Hw3/ids2title");
+    res.map(x => (x._2._1, x._1)).saveAsTextFile("Hw3/title2ids");
+
     sc.stop
   }
 }
