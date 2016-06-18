@@ -30,7 +30,7 @@ object NewInvIdx {
     try { hdfs.delete(new Path(outputPath), true) } catch { case _: Throwable => {} }
     //val data = sc.newAPIHadoopFile(filePath,classOf[TextInputFormat],classOf[LongWritable],classOf[Text],new Configuration());
 
-    val lines = sc.textFile(filePath, sc.defaultParallelism * 3).map(x => x.split("&gt"))
+    val lines = sc.textFile(filePath, sc.defaultParallelism * 3).map(x => x.split("&gt&gt"))
     .map { x => x.length }
     /*.map { x => (x(0), x(1)) }
     lines.cache();
