@@ -2,9 +2,10 @@ PageRankSp/target
 .metadata
 .recommenders/
 PageRankSp/.metadata
-PageRankSp/.classpath\
-PageRankSp/project
-PageRankSp/cache-main 
-PageRankSp/settings
+PageRankSp/.classpath
+PageRankSp/.project
+PageRankSp/.cache-main 
+PageRankSp/.settings
 PageRankSp/target
+PageRankSp/project
 class
