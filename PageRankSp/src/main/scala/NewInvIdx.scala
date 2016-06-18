@@ -35,16 +35,15 @@ object NewInvIdx {
    .map { x => (x._1.toString(),x._2.toString()) }
     
     lines.cache();
-    // def parse(x:String) =
-    regex.findAllIn("dd").toArray
+    
     var words = lines.map(line => {
 
       (regex.findAllIn(line._2).zipWithIndex).map(x => (x._1 + "&gt" + line._1, x._2))
     }).flatMap(y => y).groupByKey(sc.defaultParallelism * 3)
       .map(word => {
         val tmp = word._1.split("&gt")
-        val offsets = word._2.mkString(" ")
-        (tmp(0), (tmp(1).concat("|".concat(offsets.length.toString().concat("|".concat(offsets))))))
+        val offsets = word._2.toArray
+        (tmp(0), (tmp(1).concat("|".concat(offsets.length.toString().concat("|".concat(offsets.mkString(" ")))))))
       })
       .groupByKey(sc.defaultParallelism * 3)
       .map(index => {
