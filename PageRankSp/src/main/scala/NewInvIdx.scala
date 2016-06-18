@@ -28,11 +28,12 @@ object NewInvIdx {
     val hadoopConf = sc.hadoopConfiguration
     var hdfs = FileSystem.get(hadoopConf)
     try { hdfs.delete(new Path(outputPath), true) } catch { case _: Throwable => {} }
-    //val data = sc.newAPIHadoopFile(filePath,classOf[TextInputFormat],classOf[LongWritable],classOf[Text],new Configuration());
+    //val lines = sc.newAPIHadoopFile(filePath,classOf[KeyValueTextInputFormat],classOf[Text],classOf[Text],new Configuration());
 
-    val lines = sc.textFile(filePath, sc.defaultParallelism * 3).map(x => x.split("&gt&gt"))
-    .map { x => x.length }
-    /*.map { x => (x(0), x(1)) }
+    //val lines = sc.textFile(filePath, sc.defaultParallelism * 3).map(x => x.split("&gt&gt&gt&gt"))
+   val lines = sc.newAPIHadoopFile(filePath,classOf[KeyValueTextInputFormat],classOf[Text],classOf[Text],new Configuration())
+   .map { x => (x._1.toString(),x._2.toString()) }
+    
     lines.cache();
     // def parse(x:String) =
     regex.findAllIn("dd").toArray
@@ -49,7 +50,7 @@ object NewInvIdx {
       .map(index => {
         val doc = index._2.toArray
         (index._1+"&gt"+doc.length.toString()+"&gt"+doc.mkString(";"))
-      })*/
+      })
       .saveAsTextFile(outputPath)
     //val ids = sc.textFile("Hw3/ids2title", sc.defaultParallelism * 3).map(x => x.split("&gt")).map { x => (x(0), x(1)) }
 

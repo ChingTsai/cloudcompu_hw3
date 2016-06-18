@@ -1,8 +1,8 @@
 import org.apache.hadoop.fs.FileSystem
 import org.apache.hadoop.fs.Path
-import org.apache.hadoop.io.IntWritable
 import org.apache.hadoop.io.Text
-import org.apache.hadoop.mapred.TextOutputFormat
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat
+
 import org.apache.spark.HashPartitioner
 import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext
@@ -32,10 +32,16 @@ object InvertedIdx {
       ((lineXml \ "title").text, ((lineXml \ "revision" \ "text").text));
     }))
       .zipWithUniqueId().map(x => (x._2.toString(), x._1)).partitionBy(new HashPartitioner(sc.defaultParallelism * 3))
-    res.map(x => (x._1 + "&gt&gt" + x._2._2)).saveAsTextFile(outputPath);
-    res.map(x => (x._1 + "&gt&gt" + x._2._1)).saveAsTextFile("Hw3/ids2title");
-    res.map(x => (x._2._1 + "&gt&gt" + x._1)).saveAsTextFile("Hw3/title2ids");
-
+    
+    res.map(x => (x._1, x._2._2)).saveAsNewAPIHadoopFile(outputPath,classOf[Text],classOf[Text],classOf[TextOutputFormat[Text,Text]])
+    res.map(x => (x._1, x._2._1)).saveAsNewAPIHadoopFile("Hw3/ids2title",classOf[Text],classOf[Text],classOf[TextOutputFormat[Text,Text]])
+    res.map(x => (x._2._1, x._1)).saveAsNewAPIHadoopFile("Hw3/title2ids",classOf[Text],classOf[Text],classOf[TextOutputFormat[Text,Text]])
+    
+ /*
+    res.map(x => (x._1 + "&gt&gt&gt&gt" + x._2._2)).saveAsTextFile(outputPath);
+    res.map(x => (x._1 + "&gt&gt&gt&gt" + x._2._1)).saveAsTextFile("Hw3/ids2title");
+    res.map(x => (x._2._1 + "&gt&gt&gt&gt" + x._1)).saveAsTextFile("Hw3/title2ids");
+	*/
     sc.stop
   }
 }
