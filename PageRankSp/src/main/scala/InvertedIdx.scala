@@ -34,14 +34,14 @@ object InvertedIdx {
       .zipWithUniqueId().map(x => (x._2.toString(), x._1)).partitionBy(new HashPartitioner(sc.defaultParallelism * 3))
     
     res.map(x => (x._1, x._2._2)).saveAsNewAPIHadoopFile(outputPath,classOf[Text],classOf[Text],classOf[TextOutputFormat[Text,Text]])
-    res.map(x => (x._1, x._2._1)).saveAsNewAPIHadoopFile("Hw3/ids2title",classOf[Text],classOf[Text],classOf[TextOutputFormat[Text,Text]])
-    res.map(x => (x._2._1, x._1)).saveAsNewAPIHadoopFile("Hw3/title2ids",classOf[Text],classOf[Text],classOf[TextOutputFormat[Text,Text]])
+    //res.map(x => (x._1, x._2._1)).saveAsNewAPIHadoopFile("Hw3/ids2title",classOf[Text],classOf[Text],classOf[TextOutputFormat[Text,Text]])
+    //res.map(x => (x._2._1, x._1)).saveAsNewAPIHadoopFile("Hw3/title2ids",classOf[Text],classOf[Text],classOf[TextOutputFormat[Text,Text]])
     
- /*
-    res.map(x => (x._1 + "&gt&gt&gt&gt" + x._2._2)).saveAsTextFile(outputPath);
-    res.map(x => (x._1 + "&gt&gt&gt&gt" + x._2._1)).saveAsTextFile("Hw3/ids2title");
-    res.map(x => (x._2._1 + "&gt&gt&gt&gt" + x._1)).saveAsTextFile("Hw3/title2ids");
-	*/
+ 
+  //  res.map(x => (x._1 + "&gt&gt&gt&gt" + x._2._2)).saveAsTextFile(outputPath);
+    res.map(x => (x._1 + "|" + x._2._1)).saveAsTextFile("Hw3/ids2title");
+    res.map(x => (x._2._1 + "|" + x._1)).saveAsTextFile("Hw3/title2ids");
+	
     sc.stop
   }
 }
