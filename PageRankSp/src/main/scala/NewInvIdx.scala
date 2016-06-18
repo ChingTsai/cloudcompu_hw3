@@ -22,7 +22,7 @@ object NewInvIdx {
 
     val conf = new SparkConf().setAppName("InvertedIdx_2ns_Phase")
     val sc = new SparkContext(conf)
-    val regex = "([A-Za -z]+)".r;
+    val regex = "([A-Za-z]+)".r;
 
     // Cleanup output dir
     val hadoopConf = sc.hadoopConfiguration
