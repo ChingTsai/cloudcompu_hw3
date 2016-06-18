@@ -43,13 +43,13 @@ object NewInvIdx {
     }).flatMap(y => y).groupByKey(sc.defaultParallelism * 3)
       .map(word => {
         val tmp = word._1.split("&gt")
-        val offsets = word._2.mkString(",")
+        val offsets = word._2.mkString(" ")
         (tmp(0), (tmp(1).concat("|".concat(offsets.length.toString().concat("|".concat(offsets))))))
       })
       .groupByKey(sc.defaultParallelism * 3)
       .map(index => {
         val doc = index._2.toArray
-        (index._1+"&gt"+doc.length.toString()+"&gt"+doc.mkString(";"))
+        (index._1+","+doc.length.toString()+","+doc.mkString(";"))
       })
       .saveAsTextFile(outputPath)
     //val ids = sc.textFile("Hw3/ids2title", sc.defaultParallelism * 3).map(x => x.split("&gt")).map { x => (x(0), x(1)) }
