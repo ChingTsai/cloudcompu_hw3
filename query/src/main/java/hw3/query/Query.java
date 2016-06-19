@@ -154,7 +154,7 @@ public class Query {
 						count++;
 					}
 					int st = matcher.start();
-					System.out.println(text.substring(st - 50, st + 50));
+					System.out.println(text.substring(st, st + 50));
 				}
 			}
 
