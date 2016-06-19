@@ -104,12 +104,14 @@ public class Query {
 				info = Bytes.toString(
 						result.getValue(Bytes.toBytes("info"), null))
 						.split(";");
+				System.out.println(info);
 				for (String i : info) {
 					tmp = i.split("|");
 					String tmpTitle = Bytes.toString(ids2title.get(
 							new Get(Bytes.toBytes(tmp[0]))).getValue(
 							Bytes.toBytes("title"), null));
-					System.out.println(tmpTitle);
+					System.out.println(tmp[1]);
+					System.out.println(tmp[2]);
 					if (H.containsKey(tmpTitle)) {
 						page p = H.get(tmpTitle);
 						p.offset.add(tmp[2].split(" "));
