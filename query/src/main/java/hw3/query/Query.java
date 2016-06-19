@@ -87,7 +87,7 @@ public class Query {
 			String[] info;
 			String[] tmp;
 			HashMap<String, page> H = new HashMap<String, page>();
-			query = arg[0];
+			query = args[0];
 			//while ((query = in.readLine()) != null && query.length() != 0) {
 				
 				q = query.split(" ");
