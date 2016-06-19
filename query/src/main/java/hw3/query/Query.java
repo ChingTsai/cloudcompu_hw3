@@ -100,7 +100,7 @@ public class Query {
 				result = invidx.get(new Get(s.getBytes()));
 				df = Integer.parseInt(Bytes.toString(result.getValue(
 						Bytes.toBytes("df"), null)));
-				System.out.println(df);
+				
 				info = Bytes.toString(
 						result.getValue(Bytes.toBytes("info"), null))
 						.split(";");
@@ -109,6 +109,7 @@ public class Query {
 					String tmpTitle = Bytes.toString(ids2title.get(
 							new Get(Bytes.toBytes(tmp[0]))).getValue(
 							Bytes.toBytes("title"), null));
+					System.out.println(tmpTitle);
 					if (H.containsKey(tmpTitle)) {
 						page p = H.get(tmpTitle);
 						p.offset.add(tmp[2].split(" "));
