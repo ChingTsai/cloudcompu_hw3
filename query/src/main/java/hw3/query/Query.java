@@ -130,10 +130,10 @@ public class Query {
 			Matcher matcher;
 			LinkedList<Integer> L = new LinkedList<Integer>();
 			int count = 0;
-			long t1 = System.currentTimeMillis();
+
 			for (int j = 0; j < 10 && j < valuesList.size(); j++) {
 				page p = valuesList.get(j);
-				System.out.println(p.title + " : " + p.tfdf + " : " + p.offset.getFirst().length);
+				System.out.println("No." + (j + 1) + " : " + p.title + " [Score= " + p.tfdf + " ] ");
 				String text = Bytes
 						.toString(preprocess.get(new Get(Bytes.toBytes(p.title))).getValue("text".getBytes(), null));
 				matcher = Pattern.compile("([A-Za-z]+)").matcher(text);
@@ -158,7 +158,6 @@ public class Query {
 					System.out.println(st + " : " + text.substring(st, st + 50));
 				}
 			}
-			System.out.println("TIME : " + ((double) System.currentTimeMillis() - (double) t1) / 1000);
 
 			// }
 
