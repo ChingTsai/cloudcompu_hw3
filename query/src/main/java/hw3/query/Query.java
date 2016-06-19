@@ -108,18 +108,12 @@ public class Query {
 				info = Bytes.toString(
 						result.getValue(Bytes.toBytes("info"), null))
 						.split(";");
-				System.out.println(Bytes.toString(result.getValue(
-						Bytes.toBytes("info"), null)));
 				for (String i : info) {
 					System.out.println(i);
 					tmp = i.split(":");
 					String tmpTitle = Bytes.toString(ids2title.get(
 							new Get(Bytes.toBytes(tmp[0]))).getValue(
 							Bytes.toBytes("title"), null));
-					System.out.println(tmp.length);
-					System.out.println(tmp[0]);
-					System.out.println(tmp[1]);
-					System.out.println(tmp[2]);
 					if (H.containsKey(tmpTitle)) {
 						page p = H.get(tmpTitle);
 						p.offset.add(tmp[2].split(" "));
@@ -132,7 +126,7 @@ public class Query {
 										.parseInt(tmp[1]) * Math.log10(N / df)));
 					}
 				}
-				break;
+
 				// H.put(s, invidx.get(new Get(Bytes.toBytes(s))));
 			}
 			for (page p : H.values()) {
