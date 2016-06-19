@@ -139,7 +139,7 @@ public class Query {
 			ArrayList<page> valuesList = new ArrayList<page>(H.values());
 			Collections.sort(valuesList);
 			for (int j = 0; j < 4 && j < valuesList.size(); j++) {
-				System.out.println(valuesList.get(j).title);
+				System.out.println(valuesList.get(j).title + " : "+ valuesList.get(j).tfdf);
 			}
 
 			// }
