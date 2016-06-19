@@ -10,13 +10,13 @@ import java.util.LinkedList;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Admin;
 import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.ConnectionFactory;
 import org.apache.hadoop.hbase.client.Get;
-import org.apache.hadoop.hbase.client.HTable;
 import org.apache.hadoop.hbase.client.Result;
-import org.apache.hadoop.hbase.client.coprocessor.AggregationClient;
+import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.util.Bytes;
 
 class page implements Comparable<page> {
@@ -58,15 +58,24 @@ public class Query {
 			conf = HBaseConfiguration.create();
 			connection = ConnectionFactory.createConnection(conf);
 			admin = connection.getAdmin();
-			AggregationClient ac = new AggregationClient(conf);
 
-			//HTable invidx = new HTable(conf, args[0]);
-			//HTable pagerank = new HTable(conf, args[1]);
-			
-			HTable invidx = new HTable(conf, "s104062587:100M");
-			HTable pagerank = new HTable(conf, "s104062587:pagerank");
-			HTable ids2title = new HTable(conf, "s104062587:ids2title");
-			HTable title2ids = new HTable(conf, "s104062587:title2ids");
+			// HTable invidx = new HTable(conf, args[0]);
+			// HTable pagerank = new HTable(conf, args[1]);
+			Table invidx = connection.getTable(TableName
+					.valueOf("s104062587:100M"));
+			Table pagerank = connection.getTable(TableName
+					.valueOf("s104062587:pagerank"));
+			Table ids2title = connection.getTable(TableName
+					.valueOf("s104062587:ids2title"));
+			Table title2ids = connection.getTable(TableName
+					.valueOf("s104062587:title2ids"));
+
+			/*
+			 * invidx = new HTable(conf, "s104062587:100M"); HTable pagerank =
+			 * new HTable(conf, "s104062587:pagerank"); HTable ids2title = new
+			 * HTable(conf, "s104062587:ids2title"); HTable title2ids = new
+			 * HTable(conf, "s104062587:title2ids");
+			 */
 			BufferedReader br = new BufferedReader(new FileReader("N.txt"));
 			long N = Long.parseLong(br.readLine().trim());
 			br.close();
