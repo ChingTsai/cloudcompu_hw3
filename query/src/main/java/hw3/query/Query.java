@@ -40,7 +40,7 @@ class page implements Comparable<page> {
 
 	public int compareTo(page o) {
 
-		return -1*Double.compare(this.tfdf, o.tfdf);
+		return -1 * Double.compare(this.tfdf, o.tfdf);
 	}
 }
 
@@ -139,7 +139,7 @@ public class Query {
 			ArrayList<page> valuesList = new ArrayList<page>(H.values());
 			Collections.sort(valuesList);
 			for (int j = 0; j < 4 && j < valuesList.size(); j++) {
-				System.out.println(valuesList.get(j).title + " : "+ valuesList.get(j).tfdf);
+				System.out.println(valuesList.get(j).title + " : "+ valuesList.get(j).tfdf + " : " +valuesList.get(j).offset.size()) ;
 			}
 
 			// }
