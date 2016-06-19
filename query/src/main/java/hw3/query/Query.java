@@ -88,53 +88,53 @@ public class Query {
 			String[] tmp;
 			HashMap<String, page> H = new HashMap<String, page>();
 			query = args[0];
-			//while ((query = in.readLine()) != null && query.length() != 0) {
-				
-				q = query.split(" ");
-				Result result;
-				for (String s : q) {
+			// while ((query = in.readLine()) != null && query.length() != 0) {
 
-					result = invidx.get(new Get(title2ids.get(
-							new Get(Bytes.toBytes(s))).getValue(
-							"id".getBytes(), null)));
-					df = Integer.parseInt(Bytes.toString(result.getValue(
-							"df".getBytes(), null)));
-					info = Bytes.toString(
-							result.getValue("info".getBytes(), null))
-							.split(";");
-					for (String i : info) {
-						tmp = i.split("|");
-						String tmpTitle = Bytes.toString(ids2title.get(
-								new Get(Bytes.toBytes(tmp[0]))).getValue(
-								"title".getBytes(), null));
-						if (H.containsKey(tmpTitle)) {
-							page p = H.get(tmpTitle);
-							p.offset.add(tmp[2].split(" "));
-							p.tfdf = p.tfdf + Integer.parseInt(tmp[1])
-									/ Math.log10(N / df);
-						} else {
-							H.put(tmpTitle,
-									new page(tmpTitle, tmp[2], Integer
-											.parseInt(tmp[1])
-											/ Math.log10(N / df)));
-						}
+			q = query.split(" ");
+			Result result;
+			for (String s : q) {
+				Get getid = new Get(Bytes.toBytes(s));
+				byte[] idbyte = title2ids.get(getid).getValue(
+						Bytes.toBytes("id"), null);
+
+				result = invidx.get(new Get(idbyte));
+				df = Integer.parseInt(Bytes.toString(result.getValue(
+						Bytes.toBytes("df"), null)));
+				info = Bytes.toString(
+						result.getValue(Bytes.toBytes("info"), null))
+						.split(";");
+				for (String i : info) {
+					tmp = i.split("|");
+					String tmpTitle = Bytes.toString(ids2title.get(
+							new Get(Bytes.toBytes(tmp[0]))).getValue(
+							Bytes.toBytes("title"), null));
+					if (H.containsKey(tmpTitle)) {
+						page p = H.get(tmpTitle);
+						p.offset.add(tmp[2].split(" "));
+						p.tfdf = p.tfdf + Integer.parseInt(tmp[1])
+								/ Math.log10(N / df);
+					} else {
+						H.put(tmpTitle,
+								new page(tmpTitle, tmp[2], Integer
+										.parseInt(tmp[1]) / Math.log10(N / df)));
 					}
-					// H.put(s, invidx.get(new Get(Bytes.toBytes(s))));
 				}
-				for (page p : H.values()) {
-					p.tfdf = p.tfdf
-							* Double.parseDouble(Bytes.toString(pagerank.get(
-									new Get(p.title.getBytes())).getValue(
-									"pr".getBytes(), null)));
-				}
+				// H.put(s, invidx.get(new Get(Bytes.toBytes(s))));
+			}
+			for (page p : H.values()) {
+				p.tfdf = p.tfdf
+						* Double.parseDouble(Bytes.toString(pagerank.get(
+								new Get(Bytes.toBytes(p.title))).getValue(
+								"pr".getBytes(), null)));
+			}
 
-				ArrayList<page> valuesList = new ArrayList<page>(H.values());
-				Collections.sort(valuesList);
-				for (int j = 0; j < 4 && j < valuesList.size(); j++) {
-					System.out.println(valuesList.get(j).title);
-				}
+			ArrayList<page> valuesList = new ArrayList<page>(H.values());
+			Collections.sort(valuesList);
+			for (int j = 0; j < 4 && j < valuesList.size(); j++) {
+				System.out.println(valuesList.get(j).title);
+			}
 
-			//}
+			// }
 
 			// Finalize and close connection to Hbase
 			admin.close();
