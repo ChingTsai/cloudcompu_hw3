@@ -26,11 +26,13 @@ class page implements Comparable<page> {
 
 	public page(String t, String o, double s) {
 		title = t;
+		offset = new LinkedList<String[]>();
 		offset.add(o.split(" "));
 		tfdf = s;
 	}
 
 	public int compare(Object o1, Object o2) {
+
 		page a = (page) o1;
 		page b = (page) o2;
 		return Double.compare(a.tfdf, b.tfdf);
@@ -114,6 +116,8 @@ public class Query {
 					String tmpTitle = Bytes.toString(ids2title.get(
 							new Get(Bytes.toBytes(tmp[0]))).getValue(
 							Bytes.toBytes("title"), null));
+					System.out.println(tmp.length);
+					System.out.println(tmp[0]);
 					System.out.println(tmp[1]);
 					System.out.println(tmp[2]);
 					if (H.containsKey(tmpTitle)) {
@@ -122,11 +126,13 @@ public class Query {
 						p.tfdf = p.tfdf + Integer.parseInt(tmp[1])
 								* Math.log10(N / df);
 					} else {
+
 						H.put(tmpTitle,
 								new page(tmpTitle, tmp[2], Integer
 										.parseInt(tmp[1]) * Math.log10(N / df)));
 					}
 				}
+				break;
 				// H.put(s, invidx.get(new Get(Bytes.toBytes(s))));
 			}
 			for (page p : H.values()) {
