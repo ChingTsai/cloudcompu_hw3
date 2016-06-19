@@ -104,7 +104,8 @@ public class Query {
 				info = Bytes.toString(
 						result.getValue(Bytes.toBytes("info"), null))
 						.split(";");
-				System.out.println(info);
+				System.out.println(Bytes.toString(
+						result.getValue(Bytes.toBytes("info"), null)));
 				for (String i : info) {
 					tmp = i.split("|");
 					String tmpTitle = Bytes.toString(ids2title.get(
