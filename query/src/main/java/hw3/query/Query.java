@@ -40,7 +40,7 @@ class page implements Comparable<page> {
 
 	public int compareTo(page o) {
 
-		return Double.compare(this.tfdf, o.tfdf);
+		return -1*Double.compare(this.tfdf, o.tfdf);
 	}
 }
 
