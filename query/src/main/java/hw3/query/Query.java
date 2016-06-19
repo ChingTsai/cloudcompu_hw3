@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
@@ -63,14 +65,11 @@ public class Query {
 
 			// HTable invidx = new HTable(conf, args[0]);
 			// HTable pagerank = new HTable(conf, args[1]);
-			Table invidx = connection.getTable(TableName
-					.valueOf("s104062587:100M"));
-			Table pagerank = connection.getTable(TableName
-					.valueOf("s104062587:pagerank"));
-			Table ids2title = connection.getTable(TableName
-					.valueOf("s104062587:ids2title"));
-			Table title2ids = connection.getTable(TableName
-					.valueOf("s104062587:title2ids"));
+			Table invidx = connection.getTable(TableName.valueOf("s104062587:100M"));
+			Table pagerank = connection.getTable(TableName.valueOf("s104062587:pagerank"));
+			Table ids2title = connection.getTable(TableName.valueOf("s104062587:ids2title"));
+			Table title2ids = connection.getTable(TableName.valueOf("s104062587:title2ids"));
+			Table preprocess = connection.getTable(TableName.valueOf("s104062587:preprocess"));
 
 			/*
 			 * invidx = new HTable(conf, "s104062587:100M"); HTable pagerank =
@@ -81,8 +80,7 @@ public class Query {
 			BufferedReader br = new BufferedReader(new FileReader("N.txt"));
 			long N = Long.parseLong(br.readLine().trim());
 			br.close();
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					System.in));
+			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 			String query;
 			String[] q;
 			int df;
@@ -102,44 +100,62 @@ public class Query {
 				 * System.out.println(Bytes.toString(idbyte));
 				 */
 				result = invidx.get(new Get(s.getBytes()));
-				df = Integer.parseInt(Bytes.toString(result.getValue(
-						Bytes.toBytes("df"), null)));
+				df = Integer.parseInt(Bytes.toString(result.getValue(Bytes.toBytes("df"), null)));
 
-				info = Bytes.toString(
-						result.getValue(Bytes.toBytes("info"), null))
-						.split(";");
+				info = Bytes.toString(result.getValue(Bytes.toBytes("info"), null)).split(";");
 				for (String i : info) {
-					
+
 					tmp = i.split(":");
-					String tmpTitle = Bytes.toString(ids2title.get(
-							new Get(Bytes.toBytes(tmp[0]))).getValue(
-							Bytes.toBytes("title"), null));
+					String tmpTitle = Bytes.toString(
+							ids2title.get(new Get(Bytes.toBytes(tmp[0]))).getValue(Bytes.toBytes("title"), null));
 					if (H.containsKey(tmpTitle)) {
 						page p = H.get(tmpTitle);
 						p.offset.add(tmp[2].split(" "));
-						p.tfdf = p.tfdf + Integer.parseInt(tmp[1])
-								* Math.log10(N / df);
+						p.tfdf = p.tfdf + Integer.parseInt(tmp[1]) * Math.log10(N / df);
 					} else {
 
-						H.put(tmpTitle,
-								new page(tmpTitle, tmp[2], Integer
-										.parseInt(tmp[1]) * Math.log10(N / df)));
+						H.put(tmpTitle, new page(tmpTitle, tmp[2], Integer.parseInt(tmp[1]) * Math.log10(N / df)));
 					}
 				}
 
 				// H.put(s, invidx.get(new Get(Bytes.toBytes(s))));
 			}
 			for (page p : H.values()) {
-				p.tfdf = p.tfdf
-						* Double.parseDouble(Bytes.toString(pagerank.get(
-								new Get(Bytes.toBytes(p.title))).getValue(
-								"pr".getBytes(), null)));
+				p.tfdf = p.tfdf * Double.parseDouble(
+						Bytes.toString(pagerank.get(new Get(Bytes.toBytes(p.title))).getValue("pr".getBytes(), null)));
 			}
 
 			ArrayList<page> valuesList = new ArrayList<page>(H.values());
 			Collections.sort(valuesList);
+			Matcher matcher;
+			LinkedList<Integer> L = new LinkedList<Integer>();
+			int count = 0;
 			for (int j = 0; j < 10 && j < valuesList.size(); j++) {
-				System.out.println(valuesList.get(j).title + " : "+ valuesList.get(j).tfdf + " : " +valuesList.get(j).offset.getFirst().length) ;
+				page p = valuesList.get(j);
+				System.out.println(p.title + " : " + p.tfdf + " : " + p.offset.getFirst().length);
+				String text = Bytes
+						.toString(preprocess.get(new Get(Bytes.toBytes(p.title))).getValue("text".getBytes(), null));
+				matcher = Pattern.compile("([A-Za-z]+)").matcher(text);
+				L.clear();
+				for (String[] sa : p.offset) {
+					for (String s : sa) {
+						L.add(Integer.parseInt(s));
+						if (L.size() == 3)
+							break;
+					}
+					if (L.size() == 3)
+						break;
+				}
+				count = 0;
+				while (!L.isEmpty()) {
+					int first = L.removeFirst();
+					while (count < first) {
+						matcher.find();
+						count++;
+					}
+					int st = matcher.start();
+					System.out.println(text.substring(st - 50, st + 50));
+				}
 			}
 
 			// }
