@@ -96,7 +96,7 @@ public class Query {
 				Get getid = new Get(Bytes.toBytes(s));
 				byte[] idbyte = title2ids.get(getid).getValue(
 						Bytes.toBytes("id"), null);
-
+				System.out.println(Bytes.toString(idbyte));
 				result = invidx.get(new Get(idbyte));
 				df = Integer.parseInt(Bytes.toString(result.getValue(
 						Bytes.toBytes("df"), null)));
