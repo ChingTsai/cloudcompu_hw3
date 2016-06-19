@@ -87,7 +87,9 @@ public class Query {
 			String[] info;
 			String[] tmp;
 			HashMap<String, page> H = new HashMap<String, page>();
-			while ((query = in.readLine()) != null && query.length() != 0) {
+			query = arg[0];
+			//while ((query = in.readLine()) != null && query.length() != 0) {
+				
 				q = query.split(" ");
 				Result result;
 				for (String s : q) {
@@ -132,7 +134,7 @@ public class Query {
 					System.out.println(valuesList.get(j).title);
 				}
 
-			}
+			//}
 
 			// Finalize and close connection to Hbase
 			admin.close();
