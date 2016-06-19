@@ -112,7 +112,7 @@ public class Query {
 						Bytes.toBytes("info"), null)));
 				for (String i : info) {
 					System.out.println(i);
-					tmp = i.split("|");
+					tmp = i.split(":");
 					String tmpTitle = Bytes.toString(ids2title.get(
 							new Get(Bytes.toBytes(tmp[0]))).getValue(
 							Bytes.toBytes("title"), null));
