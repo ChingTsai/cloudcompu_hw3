@@ -65,7 +65,7 @@ public class Query {
 
 			// HTable invidx = new HTable(conf, args[0]);
 			// HTable pagerank = new HTable(conf, args[1]);
-			Table invidx = connection.getTable(TableName.valueOf("s104062587:100M"));
+			Table invidx = connection.getTable(TableName.valueOf("s104062587:invidx"));
 			Table pagerank = connection.getTable(TableName.valueOf("s104062587:pagerank"));
 			Table ids2title = connection.getTable(TableName.valueOf("s104062587:ids2title"));
 			Table title2ids = connection.getTable(TableName.valueOf("s104062587:title2ids"));
@@ -87,79 +87,74 @@ public class Query {
 			String[] info;
 			String[] tmp;
 			HashMap<String, page> H = new HashMap<String, page>();
-			query = args[0];
-			// while ((query = in.readLine()) != null && query.length() != 0) {
+			// query = args[0];
+			while ((query = in.readLine()) != null && query.length() != 0) {
 
-			q = query.split(" ");
-			Result result;
-			for (String s : q) {
-				/*
-				 * Get getid = new Get(Bytes.toBytes(s)); byte[] idbyte =
-				 * title2ids.get(getid).getValue( Bytes.toBytes("id"),
-				 * Bytes.toBytes(""));
-				 * System.out.println(Bytes.toString(idbyte));
-				 */
-				result = invidx.get(new Get(s.getBytes()));
-				df = Integer.parseInt(Bytes.toString(result.getValue(Bytes.toBytes("df"), null)));
+				q = query.split(" ");
+				Result result;
+				for (String s : q) {
 
-				info = Bytes.toString(result.getValue(Bytes.toBytes("info"), null)).split(";");
-				for (String i : info) {
+					result = invidx.get(new Get(s.getBytes()));
+					df = Integer.parseInt(Bytes.toString(result.getValue(Bytes.toBytes("df"), null)));
 
-					tmp = i.split(":");
-					String tmpTitle = Bytes.toString(
-							ids2title.get(new Get(Bytes.toBytes(tmp[0]))).getValue(Bytes.toBytes("title"), null));
-					if (H.containsKey(tmpTitle)) {
-						page p = H.get(tmpTitle);
-						p.offset.add(tmp[2].split(" "));
-						p.tfdf = p.tfdf + Integer.parseInt(tmp[1]) * Math.log10(N / df);
-					} else {
+					info = Bytes.toString(result.getValue(Bytes.toBytes("info"), null)).split(";");
+					for (String i : info) {
 
-						H.put(tmpTitle, new page(tmpTitle, tmp[2], Integer.parseInt(tmp[1]) * Math.log10(N / df)));
+						tmp = i.split(":");
+						String tmpTitle = Bytes.toString(
+								ids2title.get(new Get(Bytes.toBytes(tmp[0]))).getValue(Bytes.toBytes("title"), null));
+						if (H.containsKey(tmpTitle)) {
+							page p = H.get(tmpTitle);
+							p.offset.add(tmp[2].split(" "));
+							p.tfdf = p.tfdf + Integer.parseInt(tmp[1]) * Math.log10(N / df);
+						} else {
+
+							H.put(tmpTitle, new page(tmpTitle, tmp[2], Integer.parseInt(tmp[1]) * Math.log10(N / df)));
+						}
 					}
+
+					// H.put(s, invidx.get(new Get(Bytes.toBytes(s))));
+				}
+				for (page p : H.values()) {
+					p.tfdf = p.tfdf * Double.parseDouble(Bytes
+							.toString(pagerank.get(new Get(Bytes.toBytes(p.title))).getValue("pr".getBytes(), null)));
 				}
 
-				// H.put(s, invidx.get(new Get(Bytes.toBytes(s))));
-			}
-			for (page p : H.values()) {
-				p.tfdf = p.tfdf * Double.parseDouble(
-						Bytes.toString(pagerank.get(new Get(Bytes.toBytes(p.title))).getValue("pr".getBytes(), null)));
-			}
+				ArrayList<page> valuesList = new ArrayList<page>(H.values());
+				Collections.sort(valuesList);
+				Matcher matcher;
+				LinkedList<Integer> L = new LinkedList<Integer>();
+				int count = 0;
 
-			ArrayList<page> valuesList = new ArrayList<page>(H.values());
-			Collections.sort(valuesList);
-			Matcher matcher;
-			LinkedList<Integer> L = new LinkedList<Integer>();
-			int count = 0;
-
-			for (int j = 0; j < 10 && j < valuesList.size(); j++) {
-				page p = valuesList.get(j);
-				System.out.println("No." + (j + 1) + " : " + p.title + " [Score= " + p.tfdf + " ] ");
-				String text = Bytes
-						.toString(preprocess.get(new Get(Bytes.toBytes(p.title))).getValue("text".getBytes(), null));
-				matcher = Pattern.compile("([A-Za-z]+)").matcher(text);
-				L.clear();
-				for (String[] sa : p.offset) {
-					for (String s : sa) {
-						L.add(Integer.parseInt(s));
+				for (int j = 0; j < 10 && j < valuesList.size(); j++) {
+					page p = valuesList.get(j);
+					System.out.println("No." + (j + 1) + " : " + p.title + " [Score= " + p.tfdf + " ] ");
+					String text = Bytes.toString(
+							preprocess.get(new Get(Bytes.toBytes(p.title))).getValue("text".getBytes(), null));
+					matcher = Pattern.compile("([A-Za-z]+)").matcher(text);
+					L.clear();
+					for (String[] sa : p.offset) {
+						for (String s : sa) {
+							L.add(Integer.parseInt(s));
+							if (L.size() == 3)
+								break;
+						}
 						if (L.size() == 3)
 							break;
 					}
-					if (L.size() == 3)
-						break;
-				}
-				count = 0;
-				while (!L.isEmpty()) {
-					int first = L.removeFirst();
-					while (count < first) {
-						matcher.find();
-						count++;
+					count = 0;
+					while (!L.isEmpty()) {
+						int first = L.removeFirst();
+						while (count < first) {
+							matcher.find();
+							count++;
+						}
+						int st = matcher.start();
+						System.out.println(st + " : " + text.substring(st, st + 50));
 					}
-					int st = matcher.start();
-					System.out.println(st + " : " + text.substring(st, st + 50));
 				}
-			}
 
-			// }
+			}
 
 			// Finalize and close connection to Hbase
 			admin.close();
