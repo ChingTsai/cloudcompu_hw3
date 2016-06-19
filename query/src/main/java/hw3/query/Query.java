@@ -93,20 +93,23 @@ public class Query {
 			q = query.split(" ");
 			Result result;
 			for (String s : q) {
-				/*Get getid = new Get(Bytes.toBytes(s));
-				byte[] idbyte = title2ids.get(getid).getValue(
-						Bytes.toBytes("id"), Bytes.toBytes(""));
-				System.out.println(Bytes.toString(idbyte));*/
+				/*
+				 * Get getid = new Get(Bytes.toBytes(s)); byte[] idbyte =
+				 * title2ids.get(getid).getValue( Bytes.toBytes("id"),
+				 * Bytes.toBytes(""));
+				 * System.out.println(Bytes.toString(idbyte));
+				 */
 				result = invidx.get(new Get(s.getBytes()));
 				df = Integer.parseInt(Bytes.toString(result.getValue(
 						Bytes.toBytes("df"), null)));
-				
+
 				info = Bytes.toString(
 						result.getValue(Bytes.toBytes("info"), null))
 						.split(";");
-				System.out.println(Bytes.toString(
-						result.getValue(Bytes.toBytes("info"), null)));
+				System.out.println(Bytes.toString(result.getValue(
+						Bytes.toBytes("info"), null)));
 				for (String i : info) {
+					System.out.println(i);
 					tmp = i.split("|");
 					String tmpTitle = Bytes.toString(ids2title.get(
 							new Get(Bytes.toBytes(tmp[0]))).getValue(
@@ -117,11 +120,11 @@ public class Query {
 						page p = H.get(tmpTitle);
 						p.offset.add(tmp[2].split(" "));
 						p.tfdf = p.tfdf + Integer.parseInt(tmp[1])
-								/ Math.log10(N / df);
+								* Math.log10(N / df);
 					} else {
 						H.put(tmpTitle,
 								new page(tmpTitle, tmp[2], Integer
-										.parseInt(tmp[1]) / Math.log10(N / df)));
+										.parseInt(tmp[1]) * Math.log10(N / df)));
 					}
 				}
 				// H.put(s, invidx.get(new Get(Bytes.toBytes(s))));
