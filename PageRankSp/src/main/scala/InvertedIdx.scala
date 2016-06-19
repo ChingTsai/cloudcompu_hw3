@@ -22,6 +22,7 @@ object InvertedIdx {
     val hadoopConf = sc.hadoopConfiguration
     var hdfs = FileSystem.get(hadoopConf)
     try { hdfs.delete(new Path(outputPath), true) } catch { case _: Throwable => {} }
+    try { hdfs.delete(new Path("Hw3/preprocess"), true) } catch { case _: Throwable => {} }
     try { hdfs.delete(new Path("Hw3/ids2title"), true) } catch { case _: Throwable => {} }
     try { hdfs.delete(new Path("Hw3/title2ids"), true) } catch { case _: Throwable => {} }
 
@@ -39,6 +40,7 @@ object InvertedIdx {
     
  
   //  res.map(x => (x._1 + "&gt&gt&gt&gt" + x._2._2)).saveAsTextFile(outputPath);
+    res.map(x => (x._1+"|"+ x._2._2)).saveAsTextFile("Hw3/preprocess");
     res.map(x => (x._1 + "|" + x._2._1)).saveAsTextFile("Hw3/ids2title");
     res.map(x => (x._2._1 + "|" + x._1)).saveAsTextFile("Hw3/title2ids");
 	
