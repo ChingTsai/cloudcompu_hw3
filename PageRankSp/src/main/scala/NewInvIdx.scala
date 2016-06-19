@@ -43,7 +43,7 @@ object NewInvIdx {
       .map(word => {
         val tmp = word._1.split("&gt")
         val offsets = word._2.toArray
-        (tmp(0), (tmp(1).concat("|".concat(offsets.length.toString().concat("|".concat(offsets.mkString(" ")))))))
+        (tmp(0), (tmp(1).concat(":".concat(offsets.length.toString().concat(":".concat(offsets.mkString(" ")))))))
       })
       .groupByKey(sc.defaultParallelism * 3)
       .map(index => {
