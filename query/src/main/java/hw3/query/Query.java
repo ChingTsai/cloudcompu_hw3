@@ -130,7 +130,7 @@ public class Query {
 			Matcher matcher;
 			LinkedList<Integer> L = new LinkedList<Integer>();
 			int count = 0;
-			long t1 = System.nanoTime();
+			long t1 = System.currentTimeMillis();
 			for (int j = 0; j < 10 && j < valuesList.size(); j++) {
 				page p = valuesList.get(j);
 				System.out.println(p.title + " : " + p.tfdf + " : " + p.offset.getFirst().length);
@@ -158,7 +158,7 @@ public class Query {
 					System.out.println(st + " : " + text.substring(st, st + 50));
 				}
 			}
-			System.out.println("TIME : "+(System.nanoTime()-t1)/1000000);
+			System.out.println("TIME : " + ((double) System.currentTimeMillis() - (double) t1) / 1000);
 
 			// }
 
