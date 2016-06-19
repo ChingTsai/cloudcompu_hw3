@@ -3,6 +3,8 @@ import org.apache.spark.SparkContext
 import org.apache.hadoop.fs.FileSystem
 import org.apache.hadoop.fs.Path
 import org.apache.spark.HashPartitioner
+import java.io.PrintWriter
+import java.io.File
 
 object NewPageRank {
   def main(args: Array[String]) {
@@ -40,8 +42,8 @@ object NewPageRank {
         .map(row => {
           row._2.toArray.filter(_ != "&gt").map(tp => (tp, row._1)).+:(row._1, "&gt");
         }).flatMap(y => y).groupByKey(sc.defaultParallelism * 5).map(x => (x._1, x._2.toArray.filter { _ != "&gt" }))
-      link =  link.partitionBy(new HashPartitioner(sc.defaultParallelism * 5));
-        
+    link = link.partitionBy(new HashPartitioner(sc.defaultParallelism * 5));
+
     link = link.cache();
 
     val n = lines.count();
@@ -71,7 +73,7 @@ object NewPageRank {
 
       //var Er = tmpPR.subtractByKey(rddPR.map(x => (x._1, x._2._2))).partitionBy(partitioner)
       Err = tmpPR.join(rddPR, sc.defaultParallelism * 10).map(x => (x._2._1 - x._2._2).abs).reduce(_ + _)
-      
+
       rddPR = tmpPR;
 
       micros = (System.nanoTime - st) / 1000000000.0
@@ -82,7 +84,10 @@ object NewPageRank {
 
     val res = rddPR;
     res.sortBy({ case (page, pr) => (-pr, page) }, true, sc.defaultParallelism * 5).map(x => x._1 + "|" + x._2).saveAsTextFile(outputPath);
-    
+
     sc.stop
+    val pw = new PrintWriter(new File("N.txt"))
+    pw.write(n.toString());
+    pw.close
   }
 }
