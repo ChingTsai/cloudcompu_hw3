@@ -164,7 +164,9 @@ public class Query {
 					L.clear();
 					for (String[] sa : p.offset) {
 						for (String s : sa) {
-							L.add(Integer.parseInt(s));
+							int f = Integer.parseInt(s);
+							if(f!=L.getFirst())
+								L.add(f);
 							if (L.size() == 3)
 								break;
 						}
