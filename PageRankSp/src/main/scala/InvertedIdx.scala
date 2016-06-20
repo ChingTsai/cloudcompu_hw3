@@ -7,6 +7,8 @@ import org.apache.spark.HashPartitioner
 import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD.rddToPairRDDFunctions
+import java.io.PrintWriter
+import java.io.File
 
 object InvertedIdx {
   def main(args: Array[String]) {
@@ -45,5 +47,8 @@ object InvertedIdx {
     res.map(x => (x._2._1 + "|" + x._1)).saveAsTextFile("Hw3/title2ids");
 	
     sc.stop
+    val pw = new PrintWriter(new File("Npre.txt"))
+    pw.write(res.count().toString());
+    pw.close
   }
 }
