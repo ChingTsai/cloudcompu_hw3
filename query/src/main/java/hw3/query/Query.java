@@ -172,6 +172,7 @@ public class Query {
 							break;
 					}
 					count = 0;
+					System.out.println(L.size());
 					while (!L.isEmpty()) {
 						int first = L.removeFirst();
 						while (count < first) {
