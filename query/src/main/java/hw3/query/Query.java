@@ -143,19 +143,21 @@ public class Query {
 					System.out.println("Qury takes Time: " + (System.currentTimeMillis() - t1));
 					// H.put(s, invidx.get(new Get(Bytes.toBytes(s))));
 				}
+				t1 = System.currentTimeMillis();
 				for (page p : H.values()) {
 					p.tfdf = p.tfdf
 							* Double.parseDouble(Bytes.toString(pagerank.get(
 									new Get(Bytes.toBytes(p.title))).getValue(
 									"pr".getBytes(), null)));
 				}
-
+				System.out.println("Page Rank takes Time: " + (System.currentTimeMillis() - t1));
+				t1 = System.currentTimeMillis();
 				ArrayList<page> valuesList = new ArrayList<page>(H.values());
 				Collections.sort(valuesList);
 				Matcher matcher;
 				LinkedList<Integer> L = new LinkedList<Integer>();
 				int count = 0;
-
+				
 				for (int j = 0; j < 10 && j < valuesList.size(); j++) {
 					page p = valuesList.get(j);
 					System.out.println("No." + (j + 1) + " : " + p.title
@@ -186,6 +188,7 @@ public class Query {
 								+ text.substring(st, st + 50));
 					}
 				}
+				System.out.println("Print takes Time: " + (System.currentTimeMillis() - t1));
 
 			}
 
