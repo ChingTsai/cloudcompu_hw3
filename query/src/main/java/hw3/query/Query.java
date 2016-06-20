@@ -23,8 +23,6 @@ import org.apache.hadoop.hbase.client.Scan;
 import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.util.Bytes;
 
-import com.google.common.base.Strings;
-
 class page implements Comparable<page> {
 	public double tfdf = 0.0d;
 	public LinkedList<String[]> offset;
