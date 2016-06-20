@@ -113,7 +113,8 @@ public class Query {
 				q = query.split(" ");
 				Result result;
 				for (String s : q) {
-
+					System.out.println("Qury for "+s);
+					t1 = System.currentTimeMillis();
 					result = invidx.get(new Get(s.getBytes()));
 					df = Integer.parseInt(Bytes.toString(result.getValue(
 							Bytes.toBytes("df"), null)));
@@ -139,7 +140,7 @@ public class Query {
 											* Math.log10(N / df)));
 						}
 					}
-
+					System.out.println("Qury takes Time: " + (System.currentTimeMillis() - t1));
 					// H.put(s, invidx.get(new Get(Bytes.toBytes(s))));
 				}
 				for (page p : H.values()) {
