@@ -179,10 +179,9 @@ public class Query {
 						tfdfsum += w.tfdf;
 
 					// p.tfdf = tfdfsum * Double.parseDouble(PR.get(p.title));
-					String prr = Bytes.toString( pagerank.get(new Get(p.title.getBytes())).getValue("pr".getBytes(), null) );
-					System.out.println(prr);
+				
 					p.tfdf = tfdfsum
-							* Double.parseDouble( prr);
+							* Double.parseDouble( Bytes.toString( pagerank.get(new Get(p.title.getBytes())).getValue("pr".getBytes(), null) ));
 					Collections.sort(p.wordsets);
 				}
 				System.out.println("Get Pagerank Time: "
