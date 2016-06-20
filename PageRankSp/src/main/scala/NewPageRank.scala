@@ -5,6 +5,16 @@ import org.apache.hadoop.fs.Path
 import org.apache.spark.HashPartitioner
 import java.io.PrintWriter
 import java.io.File
+import org.apache.hadoop.hbase.HBaseConfiguration
+import org.apache.hadoop.hbase.HTableDescriptor
+import org.apache.hadoop.hbase.client.ConnectionFactory
+import org.apache.hadoop.hbase.TableName
+import org.apache.hadoop.hbase.HColumnDescriptor
+import org.apache.hadoop.hbase.io.ImmutableBytesWritable
+import org.apache.hadoop.hbase.util.Bytes
+import org.apache.hadoop.hbase.client.Put
+import org.apache.hadoop.mapred.JobConf
+import org.apache.hadoop.hbase.mapred.TableOutputFormat
 
 object NewPageRank {
   def main(args: Array[String]) {
@@ -12,7 +22,19 @@ object NewPageRank {
     val filePath = args(0)
 
     val outputPath = args(1)
+    val hconf = HBaseConfiguration.create()
 
+    val conn = ConnectionFactory.createConnection(hconf)
+    val userTable = TableName.valueOf("s104062587:pagerank")
+    val admin = conn.getAdmin;
+    var tableDescr = new HTableDescriptor(userTable)
+    tableDescr.addFamily(new HColumnDescriptor("pr".getBytes))
+
+    if (admin.tableExists(userTable)) {
+      admin.disableTable(userTable)
+      admin.deleteTable(userTable)
+    }
+    admin.createTable(tableDescr)
     val conf = new SparkConf().setAppName("Page Rank Spark")
     val sc = new SparkContext(conf)
 
@@ -81,9 +103,19 @@ object NewPageRank {
       System.out.println("Compute :  %1.5f seconds".format(micros))
       iter = iter + 1;
     }
+    def convert(triple: (String, String)) = {
+      val p = new Put(Bytes.toBytes(triple._1))
+      p.addColumn(Bytes.toBytes("pr"), null, Bytes.toBytes(triple._2))
+      (new ImmutableBytesWritable, p)
+    }
+    val jobConf = new JobConf(hconf, this.getClass)
+    jobConf.setOutputFormat(classOf[TableOutputFormat])
 
+    jobConf.set(TableOutputFormat.OUTPUT_TABLE, "s104062587:pagerank")
     val res = rddPR;
-    res.sortBy({ case (page, pr) => (-pr, page) }, true, sc.defaultParallelism * 5).map(x => x._1 + "|" + x._2).saveAsTextFile(outputPath);
+    res.sortBy({ case (page, pr) => (-pr, page) }, true, sc.defaultParallelism * 5)
+      .map(x => (x._1, x._2.toString())).map(convert).saveAsHadoopDataset(jobConf);
+    //.map(x => x._1 + "|" + x._2).saveAsTextFile(outputPath);
 
     sc.stop
     val pw = new PrintWriter(new File("N.txt"))
