@@ -109,7 +109,7 @@ public class Query {
 			String[] tmp;
 			HashMap<String, page> H = new HashMap<String, page>();
 			// query = args[0];
-			System.out.print("Query>");
+			System.out.print("Query> ");
 			while ((query = in.readLine()) != null && query.length() != 0) {
 
 				q = query.split(" ");
@@ -162,7 +162,7 @@ public class Query {
 							"text".getBytes(), null));
 					matcher = Pattern.compile("([A-Za-z]+)").matcher(text);
 					L.clear();
-					System.out.println(p.offset.size());
+
 					for (String[] sa : p.offset) {
 						for (String s : sa) {
 							int f = Integer.parseInt(s);
@@ -191,8 +191,8 @@ public class Query {
 					System.out.println("");
 				}
 
-				System.out.print("Query>");
-			}
+				System.out.print("Query> ");
+			} 
 
 			// Finalize and close connection to Hbase
 			admin.close();
