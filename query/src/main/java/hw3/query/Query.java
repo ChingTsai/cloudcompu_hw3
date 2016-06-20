@@ -167,7 +167,7 @@ public class Query {
 							int f = Integer.parseInt(s);
 							if (L.size() == 0)
 								L.add(f);
-							else if (f != L.getFirst())
+							else if (f != L.getLast())
 								L.add(f);
 							if (L.size() == 3)
 								break;
