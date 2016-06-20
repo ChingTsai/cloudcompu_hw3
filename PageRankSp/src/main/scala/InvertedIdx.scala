@@ -30,7 +30,7 @@ object InvertedIdx {
     val hconf = HBaseConfiguration.create()
 
     val conn = ConnectionFactory.createConnection(hconf)
-    val userTable = TableName.valueOf("s104062587:preprocess")
+    var userTable = TableName.valueOf("s104062587:preprocess")
     val admin = conn.getAdmin;
     var tableDescr = new HTableDescriptor(userTable)
     tableDescr.addFamily(new HColumnDescriptor("text".getBytes))
@@ -40,8 +40,8 @@ object InvertedIdx {
       admin.deleteTable(userTable)
     }
     admin.createTable(tableDescr)
-
-    tableDescr = new HTableDescriptor(TableName.valueOf("s104062587:ids2title"))
+    userTable = TableName.valueOf("s104062587:ids2title")
+    tableDescr = new HTableDescriptor(userTable)
     tableDescr.addFamily(new HColumnDescriptor("title".getBytes))
     if (admin.tableExists(userTable)) {
       admin.disableTable(userTable)
