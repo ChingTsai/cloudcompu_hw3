@@ -109,9 +109,9 @@ public class Query {
 			String[] tmp;
 			HashMap<String, page> H = new HashMap<String, page>();
 			// query = args[0];
-			System.out.print("Query> \n");
+			System.out.print("Query> ");
 			while ((query = in.readLine()) != null && query.length() != 0) {
-
+				System.out.println("");
 				q = query.split(" ");
 				Result result;
 				for (String s : q) {
