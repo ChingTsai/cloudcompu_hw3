@@ -96,7 +96,7 @@ object InvertedIdx {
     jobConf.set(TableOutputFormat.OUTPUT_TABLE, "s104062587:preprocess")
     prep.map(convert).saveAsHadoopDataset(jobConf);
     
-    jobConf.set(TableOutputFormat.OUTPUT_TABLE, "s104062587:title2ids")
+    jobConf.set(TableOutputFormat.OUTPUT_TABLE, "s104062587:ids2title")
     ids.map(convertIds).saveAsHadoopDataset(jobConf);
 
     sc.stop
