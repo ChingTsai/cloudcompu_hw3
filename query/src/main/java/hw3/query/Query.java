@@ -110,8 +110,9 @@ public class Query {
 			HashMap<String, page> H = new HashMap<String, page>();
 			// query = args[0];
 			System.out.print("Query> ");
-			t1 = System.currentTimeMillis();
+			
 			while ((query = in.readLine()) != null && query.length() != 0) {
+				t1 = System.currentTimeMillis();
 				System.out.println("");
 				q = query.split(" ");
 				Result result;
@@ -196,10 +197,10 @@ public class Query {
 					}
 					System.out.println("");
 				}
-
+				System.out.println("Output Time: " + (System.currentTimeMillis() - t1));
 				System.out.print("Query> ");
 			} 
-			System.out.println("Output Time: " + (System.currentTimeMillis() - t1));
+			
 			// Finalize and close connection to Hbase
 			admin.close();
 			connection.close();
