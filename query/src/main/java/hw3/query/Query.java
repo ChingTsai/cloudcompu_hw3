@@ -84,13 +84,12 @@ public class Query {
 			ResultScanner ss = ids2title.getScanner(allscan);
 			for (Result result = ss.next(); (result != null); result = ss
 					.next()) {
-				for (Cell cell : result.listCells()) {
-					String qualifier = Bytes.toString(CellUtil
-							.cloneQualifier(cell));
-					String value = Bytes.toString(CellUtil.cloneValue(cell));
-					System.out.printf("Qualifier : %s : Value : %s", qualifier,
-							value);
-				}
+				System.out.println(Bytes.toString(result.getRow())
+						+ " : "
+						+ Bytes.toString(result.getValue("title".getBytes(),
+								null)));
+				;
+
 			}
 			/*
 			 * invidx = new HTable(conf, "s104062587:100M"); HTable pagerank =
