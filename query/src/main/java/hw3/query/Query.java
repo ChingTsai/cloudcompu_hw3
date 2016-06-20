@@ -177,7 +177,7 @@ public class Query {
 							break;
 					}
 					count = 0;
-					
+					Collections.sort(L);
 					while (!L.isEmpty()) {
 						int first = L.removeFirst();
 						while (count < first) {
