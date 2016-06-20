@@ -99,25 +99,31 @@ public class Query {
 			Table preprocess = connection.getTable(TableName
 					.valueOf("s104062587:preprocess"));
 			long t1;
-			/*
-			 * HashMap<String, String> id2t = new HashMap<String,
-			 * String>(100000, (float) 0.75); HashMap<String, String> PR = new
-			 * HashMap<String, String>(100000, (float) 0.75); Scan allscan = new
-			 * Scan(); ResultScanner ss = ids2title.getScanner(allscan); t1 =
-			 * System.currentTimeMillis();
-			 * 
-			 * for (Result result = ss.next(); (result != null); result = ss
-			 * .next()) { id2t.put(Bytes.toString(result.getRow()),
-			 * Bytes.toString(result .getValue("title".getBytes(), null)));
-			 * 
-			 * } ss = pagerank.getScanner(allscan); for (Result result =
-			 * ss.next(); (result != null); result = ss .next()) {
-			 * PR.put(Bytes.toString(result.getRow()),
-			 * Bytes.toString(result.getValue("pr".getBytes(), null)));
-			 * 
-			 * } System.out.println("Prebuild Time: " +
-			 * (System.currentTimeMillis() - t1));
-			 */
+
+			HashMap<String, String> id2t = new HashMap<String, String>(100000,
+					(float) 0.75);
+			HashMap<String, String> PR = new HashMap<String, String>(100000,
+					(float) 0.75);
+			Scan allscan = new Scan();
+			ResultScanner ss = ids2title.getScanner(allscan);
+			t1 = System.currentTimeMillis();
+
+			for (Result result = ss.next(); (result != null); result = ss
+					.next()) {
+				id2t.put(Bytes.toString(result.getRow()), Bytes.toString(result
+						.getValue("title".getBytes(), null)));
+
+			}
+			ss = pagerank.getScanner(allscan);
+			for (Result result = ss.next(); (result != null); result = ss
+					.next()) {
+				PR.put(Bytes.toString(result.getRow()),
+						Bytes.toString(result.getValue("pr".getBytes(), null)));
+
+			}
+			System.out.println("Prebuild Time: "
+					+ (System.currentTimeMillis() - t1));
+
 			BufferedReader br = new BufferedReader(new FileReader("N.txt"));
 			long N = Long.parseLong(br.readLine().trim());
 			br.close();
@@ -149,11 +155,11 @@ public class Query {
 					for (String i : info) {
 
 						tmp = i.split(":");
-						// String tmpTitle = id2t.get(tmp[0]);
-						String tmpTitle = Bytes.toString(ids2title.get(
-								new Get(tmp[0].getBytes())).getValue(
-								"title".getBytes(), null));
-						//System.out.println(tmpTitle);
+						String tmpTitle = id2t.get(tmp[0]);
+						// String tmpTitle = Bytes.toString(ids2title.get( new
+						// Get(tmp[0].getBytes())).getValue("title".getBytes(),
+						// null));
+
 						if (H.containsKey(tmpTitle)) {
 							page p = H.get(tmpTitle);
 							p.wordsets.add(new word(s, tmp[2], Integer
@@ -178,10 +184,12 @@ public class Query {
 					for (word w : p.wordsets)
 						tfdfsum += w.tfdf;
 
-					// p.tfdf = tfdfsum * Double.parseDouble(PR.get(p.title));
-				
-					p.tfdf = tfdfsum
-							* Double.parseDouble( Bytes.toString( pagerank.get(new Get(p.title.getBytes())).getValue("pr".getBytes(), null) ));
+					p.tfdf = tfdfsum * Double.parseDouble(PR.get(p.title));
+
+					// p.tfdf = tfdfsum * Double.parseDouble( Bytes.toString(
+					// pagerank.get(new
+					// Get(p.title.getBytes())).getValue("pr".getBytes(), null)
+					// ));
 					Collections.sort(p.wordsets);
 				}
 				System.out.println("Get Pagerank Time: "
