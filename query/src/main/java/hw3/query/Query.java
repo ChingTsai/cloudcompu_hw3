@@ -124,9 +124,8 @@ public class Query {
 					for (String i : info) {
 
 						tmp = i.split(":");
-						String tmpTitle = Bytes.toString(ids2title.get(
-								new Get(Bytes.toBytes(tmp[0]))).getValue(
-								Bytes.toBytes("title"), null));
+						String tmpTitle = id2t.get(tmp[0]);
+								//Bytes.toString(ids2title.get(new Get(Bytes.toBytes(tmp[0]))).getValue(Bytes.toBytes("title"), null));
 						if (H.containsKey(tmpTitle)) {
 							page p = H.get(tmpTitle);
 							p.offset.add(tmp[2].split(" "));
