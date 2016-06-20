@@ -116,7 +116,7 @@ object NewPageRank {
     res.sortBy({ case (page, pr) => (-pr, page) }, true, sc.defaultParallelism * 5)
       .map(x => (x._1, x._2.toString())).map(convert).saveAsHadoopDataset(jobConf);
     //.map(x => x._1 + "|" + x._2).saveAsTextFile(outputPath);
-
+    admin.close();
     sc.stop
     val pw = new PrintWriter(new File("N.txt"))
     pw.write(n.toString());

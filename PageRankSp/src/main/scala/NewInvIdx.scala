@@ -87,7 +87,7 @@ object NewInvIdx {
       .map(convert).saveAsHadoopDataset(jobConf);
       //.saveAsTextFile(outputPath)
       //val ids = sc.textFile("Hw3/ids2title", sc.defaultParallelism * 3).map(x => x.split("&gt")).map { x => (x(0), x(1)) }
-
+      admin.close();
       sc.stop
   }
 }

@@ -98,7 +98,8 @@ object InvertedIdx {
     
     jobConf.set(TableOutputFormat.OUTPUT_TABLE, "s104062587:ids2title")
     ids.map(convertIds).saveAsHadoopDataset(jobConf);
-
+    
+    admin.close();
     sc.stop
 
   }
