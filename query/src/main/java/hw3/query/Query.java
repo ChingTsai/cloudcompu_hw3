@@ -79,7 +79,7 @@ public class Query {
 					.valueOf("s104062587:title2ids"));
 			Table preprocess = connection.getTable(TableName
 					.valueOf("s104062587:preprocess"));
-			HashMap<String, String> id2t = new HashMap<String, String>(100000,0.75);
+			HashMap<String, String> id2t = new HashMap<String, String>(100000,(float) 0.75);
 			Scan allscan = new Scan();
 			ResultScanner ss = ids2title.getScanner(allscan);
 			long t1 = System.currentTimeMillis();
