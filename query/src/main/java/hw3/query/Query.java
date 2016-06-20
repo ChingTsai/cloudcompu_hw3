@@ -79,21 +79,20 @@ public class Query {
 					.valueOf("s104062587:title2ids"));
 			Table preprocess = connection.getTable(TableName
 					.valueOf("s104062587:preprocess"));
-
+			HashMap<String, String> id2t = new HashMap<String, String>();
 			Scan allscan = new Scan();
 			ResultScanner ss = ids2title.getScanner(allscan);
+			long t1 = System.currentTimeMillis();
 			for (Result result = ss.next(); (result != null); result = ss
 					.next()) {
-				System.out.println(Bytes.toString(result.getRow())
-						+ " : "
-						+ Bytes.toString(result.getValue("title".getBytes(),
-								null)));
-				;
+				id2t.put(Bytes.toString(result.getRow()), Bytes.toString(result
+						.getValue("title".getBytes(), null)));
 
 			}
+			System.out.println("Time: " + (System.currentTimeMillis() - t1));
 			/*
 			 * invidx = new HTable(conf, "s104062587:100M"); HTable pagerank =
-			 * new HTable(conf, "s104062587:pagerank"); HTable ids2title = new
+			 * new HTable(conf, "s104062587:pageransk"); HTable ids2title = new
 			 * HTable(conf, "s104062587:ids2title"); HTable title2ids = new
 			 * HTable(conf, "s104062587:title2ids");
 			 */
