@@ -11,6 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.hbase.Cell;
+import org.apache.hadoop.hbase.CellUtil;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Admin;
@@ -18,6 +20,8 @@ import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.ConnectionFactory;
 import org.apache.hadoop.hbase.client.Get;
 import org.apache.hadoop.hbase.client.Result;
+import org.apache.hadoop.hbase.client.ResultScanner;
+import org.apache.hadoop.hbase.client.Scan;
 import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.util.Bytes;
 
@@ -65,12 +69,29 @@ public class Query {
 
 			// HTable invidx = new HTable(conf, args[0]);
 			// HTable pagerank = new HTable(conf, args[1]);
-			Table invidx = connection.getTable(TableName.valueOf("s104062587:invidx"));
-			Table pagerank = connection.getTable(TableName.valueOf("s104062587:pagerank"));
-			Table ids2title = connection.getTable(TableName.valueOf("s104062587:ids2title"));
-			Table title2ids = connection.getTable(TableName.valueOf("s104062587:title2ids"));
-			Table preprocess = connection.getTable(TableName.valueOf("s104062587:preprocess"));
+			Table invidx = connection.getTable(TableName
+					.valueOf("s104062587:invidx"));
+			Table pagerank = connection.getTable(TableName
+					.valueOf("s104062587:pagerank"));
+			Table ids2title = connection.getTable(TableName
+					.valueOf("s104062587:ids2title"));
+			Table title2ids = connection.getTable(TableName
+					.valueOf("s104062587:title2ids"));
+			Table preprocess = connection.getTable(TableName
+					.valueOf("s104062587:preprocess"));
 
+			Scan allscan = new Scan();
+			ResultScanner ss = ids2title.getScanner(allscan);
+			for (Result result = ss.next(); (result != null); result = ss
+					.next()) {
+				for (Cell cell : result.listCells()) {
+					String qualifier = Bytes.toString(CellUtil
+							.cloneQualifier(cell));
+					String value = Bytes.toString(CellUtil.cloneValue(cell));
+					System.out.printf("Qualifier : %s : Value : %s", qualifier,
+							value);
+				}
+			}
 			/*
 			 * invidx = new HTable(conf, "s104062587:100M"); HTable pagerank =
 			 * new HTable(conf, "s104062587:pagerank"); HTable ids2title = new
@@ -80,7 +101,8 @@ public class Query {
 			BufferedReader br = new BufferedReader(new FileReader("N.txt"));
 			long N = Long.parseLong(br.readLine().trim());
 			br.close();
-			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					System.in));
 			String query;
 			String[] q;
 			int df;
@@ -95,29 +117,39 @@ public class Query {
 				for (String s : q) {
 
 					result = invidx.get(new Get(s.getBytes()));
-					df = Integer.parseInt(Bytes.toString(result.getValue(Bytes.toBytes("df"), null)));
+					df = Integer.parseInt(Bytes.toString(result.getValue(
+							Bytes.toBytes("df"), null)));
 
-					info = Bytes.toString(result.getValue(Bytes.toBytes("info"), null)).split(";");
+					info = Bytes.toString(
+							result.getValue(Bytes.toBytes("info"), null))
+							.split(";");
 					for (String i : info) {
 
 						tmp = i.split(":");
-						String tmpTitle = Bytes.toString(
-								ids2title.get(new Get(Bytes.toBytes(tmp[0]))).getValue(Bytes.toBytes("title"), null));
+						String tmpTitle = Bytes.toString(ids2title.get(
+								new Get(Bytes.toBytes(tmp[0]))).getValue(
+								Bytes.toBytes("title"), null));
 						if (H.containsKey(tmpTitle)) {
 							page p = H.get(tmpTitle);
 							p.offset.add(tmp[2].split(" "));
-							p.tfdf = p.tfdf + Integer.parseInt(tmp[1]) * Math.log10(N / df);
+							p.tfdf = p.tfdf + Integer.parseInt(tmp[1])
+									* Math.log10(N / df);
 						} else {
 
-							H.put(tmpTitle, new page(tmpTitle, tmp[2], Integer.parseInt(tmp[1]) * Math.log10(N / df)));
+							H.put(tmpTitle,
+									new page(tmpTitle, tmp[2], Integer
+											.parseInt(tmp[1])
+											* Math.log10(N / df)));
 						}
 					}
 
 					// H.put(s, invidx.get(new Get(Bytes.toBytes(s))));
 				}
 				for (page p : H.values()) {
-					p.tfdf = p.tfdf * Double.parseDouble(Bytes
-							.toString(pagerank.get(new Get(Bytes.toBytes(p.title))).getValue("pr".getBytes(), null)));
+					p.tfdf = p.tfdf
+							* Double.parseDouble(Bytes.toString(pagerank.get(
+									new Get(Bytes.toBytes(p.title))).getValue(
+									"pr".getBytes(), null)));
 				}
 
 				ArrayList<page> valuesList = new ArrayList<page>(H.values());
@@ -128,9 +160,11 @@ public class Query {
 
 				for (int j = 0; j < 10 && j < valuesList.size(); j++) {
 					page p = valuesList.get(j);
-					System.out.println("No." + (j + 1) + " : " + p.title + " [Score= " + p.tfdf + " ] ");
-					String text = Bytes.toString(
-							preprocess.get(new Get(Bytes.toBytes(p.title))).getValue("text".getBytes(), null));
+					System.out.println("No." + (j + 1) + " : " + p.title
+							+ " [Score= " + p.tfdf + " ] ");
+					String text = Bytes.toString(preprocess.get(
+							new Get(Bytes.toBytes(p.title))).getValue(
+							"text".getBytes(), null));
 					matcher = Pattern.compile("([A-Za-z]+)").matcher(text);
 					L.clear();
 					for (String[] sa : p.offset) {
@@ -150,7 +184,8 @@ public class Query {
 							count++;
 						}
 						int st = matcher.start();
-						System.out.println(st + " : " + text.substring(st, st + 50));
+						System.out.println(st + " : "
+								+ text.substring(st, st + 50));
 					}
 				}
 
