@@ -106,7 +106,7 @@ public class Query {
 					(float) 0.75);
 			Scan allscan = new Scan();
 			ResultScanner ss = ids2title.getScanner(allscan);
-			t1 = System.currentTimeMillis();
+			//t1 = System.currentTimeMillis();
 
 			for (Result result = ss.next(); (result != null); result = ss
 					.next()) {
@@ -121,8 +121,7 @@ public class Query {
 						Bytes.toString(result.getValue("pr".getBytes(), null)));
 
 			}
-			System.out.println("Prebuild Time: "
-					+ (System.currentTimeMillis() - t1));
+			//System.out.println("Prebuild Time: "					+ (System.currentTimeMillis() - t1));
 
 			BufferedReader br = new BufferedReader(new FileReader("N.txt"));
 			long N = Long.parseLong(br.readLine().trim());
@@ -139,7 +138,7 @@ public class Query {
 			System.out.print("Query> ");
 
 			while ((query = in.readLine()) != null && query.length() != 0) {
-				t1 = System.currentTimeMillis();
+				//t1 = System.currentTimeMillis();
 				System.out.println("");
 				q = query.split(" ");
 				Result result;
@@ -175,10 +174,9 @@ public class Query {
 					}
 
 				}
-				System.out.println("Query Time: "
-						+ (System.currentTimeMillis() - t1));
+				//System.out.println("Query Time: "		+ (System.currentTimeMillis() - t1));
 
-				t1 = System.currentTimeMillis();
+				//t1 = System.currentTimeMillis();
 				for (page p : H.values()) {
 					double tfdfsum = 0;
 					for (word w : p.wordsets)
@@ -192,10 +190,9 @@ public class Query {
 					// ));
 					Collections.sort(p.wordsets);
 				}
-				System.out.println("Get Pagerank Time: "
-						+ (System.currentTimeMillis() - t1));
+				//System.out.println("Get Pagerank Time: "	+ (System.currentTimeMillis() - t1));
 
-				t1 = System.currentTimeMillis();
+				//t1 = System.currentTimeMillis();
 				ArrayList<page> valuesList = new ArrayList<page>(H.values());
 				Collections.sort(valuesList);
 				System.out.println("Sorting Time: "
@@ -241,8 +238,7 @@ public class Query {
 					}
 					System.out.println("");
 				}
-				System.out.println("Output Time: "
-						+ (System.currentTimeMillis() - t1));
+				//System.out.println("Output Time: "		+ (System.currentTimeMillis() - t1));
 				System.out.print("Query> ");
 			}
 
