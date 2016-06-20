@@ -151,9 +151,9 @@ public class Query {
 						tmp = i.split(":");
 						// String tmpTitle = id2t.get(tmp[0]);
 						String tmpTitle = Bytes.toString(ids2title.get(
-								new Get(s.getBytes())).getValue(
+								new Get(tmp[0].getBytes())).getValue(
 								"title".getBytes(), null));
-						System.out.println(tmpTitle);
+						//System.out.println(tmpTitle);
 						if (H.containsKey(tmpTitle)) {
 							page p = H.get(tmpTitle);
 							p.wordsets.add(new word(s, tmp[2], Integer
