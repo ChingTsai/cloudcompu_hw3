@@ -9,6 +9,16 @@ import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD.rddToPairRDDFunctions
 import java.io.PrintWriter
 import java.io.File
+import org.apache.hadoop.hbase.HBaseConfiguration
+import org.apache.hadoop.mapred.JobConf
+import org.apache.hadoop.hbase.mapred.TableOutputFormat
+import org.apache.hadoop.hbase.client.ConnectionFactory
+import org.apache.hadoop.hbase.HTableDescriptor
+import org.apache.hadoop.hbase.TableName
+import org.apache.hadoop.hbase.HColumnDescriptor
+import org.apache.hadoop.hbase.io.ImmutableBytesWritable
+import org.apache.hadoop.hbase.util.Bytes
+import org.apache.hadoop.hbase.client.Put
 
 object InvertedIdx {
   def main(args: Array[String]) {
@@ -16,6 +26,26 @@ object InvertedIdx {
     val filePath = args(0)
 
     val outputPath = args(1)
+
+    val hconf = HBaseConfiguration.create()
+
+    val conn = ConnectionFactory.createConnection(hconf)
+    val userTable = TableName.valueOf("s104062587:preprocess")
+    val admin = conn.getAdmin;
+    val tableDescr = new HTableDescriptor(userTable)
+    tableDescr.addFamily(new HColumnDescriptor("text".getBytes))
+    println("Creating table `user`. ")
+
+    if (admin.tableExists(userTable)) {
+      admin.disableTable(userTable)
+      admin.deleteTable(userTable)
+    }
+    admin.createTable(tableDescr)
+    println("Done!")
+
+    val jobConf = new JobConf(hconf, this.getClass)
+    jobConf.setOutputFormat(classOf[TableOutputFormat])
+    jobConf.set(TableOutputFormat.OUTPUT_TABLE, "s104062587:preprocess")
 
     val conf = new SparkConf().setAppName("InvertedIdx")
     val sc = new SparkContext(conf)
@@ -29,7 +59,7 @@ object InvertedIdx {
     try { hdfs.delete(new Path("Hw3/title2ids"), true) } catch { case _: Throwable => {} }
 
     val lines = sc.textFile(filePath, sc.defaultParallelism * 3)
-    
+
     val res = (lines.map(line => {
       val lineXml = scala.xml.XML.loadString(line.toString())
       ((lineXml \ "title").text, ((lineXml \ "revision" \ "text").text));
@@ -41,14 +71,19 @@ object InvertedIdx {
     //res.map(x => (x._2._1, x._1)).saveAsNewAPIHadoopFile("Hw3/title2ids",classOf[Text],classOf[Text],classOf[TextOutputFormat[Text,Text]])
 
     //  res.map(x => (x._1 + "&gt&gt&gt&gt" + x._2._2)).saveAsTextFile(outputPath);
-    val prep = res.map(x => (x._2._1 + "^" + x._2._2))
-    prep.saveAsTextFile("Hw3/preprocess");
+    val prep = res.map(x => (x._2._1 , x._2._2))
+    //prep.saveAsTextFile("Hw3/preprocess");
     res.map(x => (x._1 + "|" + x._2._1)).saveAsTextFile("Hw3/ids2title");
     res.map(x => (x._2._1 + "|" + x._1)).saveAsTextFile("Hw3/title2ids");
-    val n = prep.count()
+
+    def convert(triple: (String, String)) = {
+      val p = new Put(Bytes.toBytes(triple._1))
+      p.addColumn(Bytes.toBytes("text"), null, Bytes.toBytes(triple._2))
+      (new ImmutableBytesWritable, p)
+    }
+    prep.map(convert).saveAsHadoopDataset(jobConf);
+    
     sc.stop
-    val pw = new PrintWriter(new File("Npre.txt"))
-    pw.write(n.toString());
-    pw.close
+
   }
 }
