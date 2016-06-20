@@ -23,6 +23,8 @@ import org.apache.hadoop.hbase.client.Scan;
 import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.util.Bytes;
 
+import com.google.common.base.Strings;
+
 class page implements Comparable<page> {
 	public double tfdf = 0.0d;
 	public LinkedList<String[]> offset;
@@ -162,6 +164,7 @@ public class Query {
 							"text".getBytes(), null));
 					matcher = Pattern.compile("([A-Za-z]+)").matcher(text);
 					L.clear();
+					System.out.println(p.offset.size());
 					for (String[] sa : p.offset) {
 						for (String s : sa) {
 							int f = Integer.parseInt(s);
@@ -176,7 +179,7 @@ public class Query {
 							break;
 					}
 					count = 0;
-					System.out.println(L.size());
+					
 					while (!L.isEmpty()) {
 						int first = L.removeFirst();
 						while (count < first) {
