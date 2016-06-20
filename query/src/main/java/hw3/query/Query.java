@@ -80,6 +80,7 @@ public class Query {
 			Table preprocess = connection.getTable(TableName
 					.valueOf("s104062587:preprocess"));
 			HashMap<String, String> id2t = new HashMap<String, String>(100000,(float) 0.75);
+			HashMap<String, String> PR = new HashMap<String, String>(100000,(float) 0.75);
 			Scan allscan = new Scan();
 			ResultScanner ss = ids2title.getScanner(allscan);
 			long t1 = System.currentTimeMillis();
@@ -87,6 +88,13 @@ public class Query {
 					.next()) {
 				id2t.put(Bytes.toString(result.getRow()), Bytes.toString(result
 						.getValue("title".getBytes(), null)));
+
+			}
+			ss = pagerank.getScanner(allscan);
+			for (Result result = ss.next(); (result != null); result = ss
+					.next()) {
+				PR.put(Bytes.toString(result.getRow()), Bytes.toString(result
+						.getValue("pr".getBytes(), null)));
 
 			}
 			System.out.println("Time: " + (System.currentTimeMillis() - t1));
@@ -146,9 +154,8 @@ public class Query {
 				t1 = System.currentTimeMillis();
 				for (page p : H.values()) {
 					p.tfdf = p.tfdf
-							* Double.parseDouble(Bytes.toString(pagerank.get(
-									new Get(Bytes.toBytes(p.title))).getValue(
-									"pr".getBytes(), null)));
+							* Double.parseDouble(PR.get(p.title));
+									//Bytes.toString(pagerank.get(new Get(Bytes.toBytes(p.title))).getValue("pr".getBytes(), null)));
 				}
 				System.out.println("Page Rank takes Time: " + (System.currentTimeMillis() - t1));
 				t1 = System.currentTimeMillis();
