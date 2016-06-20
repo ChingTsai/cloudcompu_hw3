@@ -36,8 +36,7 @@ object NewInvIdx {
     val userTable = TableName.valueOf("s104062587:invidx")
     val admin = conn.getAdmin;
     var tableDescr = new HTableDescriptor(userTable)
-    tableDescr.addFamily(new HColumnDescriptor("df".getBytes))
-    tableDescr.addFamily(new HColumnDescriptor("info".getBytes))
+    tableDescr.addFamily(new HColumnDescriptor("all".getBytes))
 
     if (admin.tableExists(userTable)) {
       admin.disableTable(userTable)
@@ -61,8 +60,8 @@ object NewInvIdx {
 
     def convert(triple: (String, String, String)) = {
       val p = new Put(Bytes.toBytes(triple._1))
-      p.addColumn(Bytes.toBytes("df"), null, Bytes.toBytes(triple._2))
-      p.addColumn(Bytes.toBytes("info"), null, Bytes.toBytes(triple._3))
+      p.addColumn(Bytes.toBytes("all"),Bytes.toBytes("df"), Bytes.toBytes(triple._2))
+      p.addColumn(Bytes.toBytes("all"),Bytes.toBytes("info"), Bytes.toBytes(triple._3))
       (new ImmutableBytesWritable, p)
     }
     val jobConf = new JobConf(hconf, this.getClass)
