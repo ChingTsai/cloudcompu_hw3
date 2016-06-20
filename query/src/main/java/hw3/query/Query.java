@@ -25,14 +25,13 @@ import org.apache.hadoop.hbase.util.Bytes;
 
 class page implements Comparable<page> {
 	public double tfdf = 0.0d;
-	public LinkedList<String[]> offset;
+	public LinkedList<word> wordsets;
 	public String title;
 
-	public page(String t, String o, double s) {
+	public page(String t, word w) {
 		title = t;
-		offset = new LinkedList<String[]>();
-		offset.add(o.split(" "));
-		tfdf = s;
+		wordsets = new LinkedList<word>();
+		wordsets.add(w);
 	}
 
 	public int compare(Object o1, Object o2) {
@@ -43,6 +42,30 @@ class page implements Comparable<page> {
 	}
 
 	public int compareTo(page o) {
+
+		return -1 * Double.compare(this.tfdf, o.tfdf);
+	}
+}
+
+class word implements Comparable<word> {
+	public double tfdf = 0.0d;
+	public String[] offset;
+	public String word;
+
+	public word(String t, String o, double s) {
+		word = t;
+		offset = o.split(" ");
+		tfdf = s;
+	}
+
+	public int word(Object o1, Object o2) {
+
+		word a = (word) o1;
+		word b = (word) o2;
+		return Double.compare(a.tfdf, b.tfdf);
+	}
+
+	public int compareTo(word o) {
 
 		return -1 * Double.compare(this.tfdf, o.tfdf);
 	}
@@ -95,7 +118,8 @@ public class Query {
 						Bytes.toString(result.getValue("pr".getBytes(), null)));
 
 			}
-			System.out.println("Prebuild Time: " + (System.currentTimeMillis() - t1));
+			System.out.println("Prebuild Time: "
+					+ (System.currentTimeMillis() - t1));
 
 			BufferedReader br = new BufferedReader(new FileReader("N.txt"));
 			long N = Long.parseLong(br.readLine().trim());
@@ -110,7 +134,7 @@ public class Query {
 			HashMap<String, page> H = new HashMap<String, page>();
 			// query = args[0];
 			System.out.print("Query> ");
-			
+
 			while ((query = in.readLine()) != null && query.length() != 0) {
 				t1 = System.currentTimeMillis();
 				System.out.println("");
@@ -131,31 +155,35 @@ public class Query {
 						String tmpTitle = id2t.get(tmp[0]);
 						if (H.containsKey(tmpTitle)) {
 							page p = H.get(tmpTitle);
-							p.offset.add(tmp[2].split(" "));
-							p.tfdf = p.tfdf + Integer.parseInt(tmp[1])
-									* Math.log10(N / df);
+							p.wordsets.add(new word(s, tmp[2],Integer.parseInt(tmp[1])* Math.log10(N / df)));
+
 						} else {
 
 							H.put(tmpTitle,
-									new page(tmpTitle, tmp[2], Integer
-											.parseInt(tmp[1])
-											* Math.log10(N / df)));
+									new page(tmpTitle, new word(s, tmp[2],Integer.parseInt(tmp[1])* Math.log10(N / df))));
 						}
 					}
 
 				}
-				System.out.println("Query Time: " + (System.currentTimeMillis() - t1));
-				
+				System.out.println("Query Time: "
+						+ (System.currentTimeMillis() - t1));
+
 				t1 = System.currentTimeMillis();
 				for (page p : H.values()) {
-					p.tfdf = p.tfdf * Double.parseDouble(PR.get(p.title));
+					double tfdfsum = 0;
+					for(word w : p.wordsets)
+						tfdfsum += w.tfdf;
+					p.tfdf = tfdfsum * Double.parseDouble(PR.get(p.title));
+					Collections.sort(p.wordsets);
 				}
-				System.out.println("Get Pagerank Time: " + (System.currentTimeMillis() - t1));
-				
+				System.out.println("Get Pagerank Time: "
+						+ (System.currentTimeMillis() - t1));
+
 				t1 = System.currentTimeMillis();
 				ArrayList<page> valuesList = new ArrayList<page>(H.values());
 				Collections.sort(valuesList);
-				System.out.println("Sorting Time: " + (System.currentTimeMillis() - t1));
+				System.out.println("Sorting Time: "
+						+ (System.currentTimeMillis() - t1));
 				Matcher matcher;
 				LinkedList<Integer> L = new LinkedList<Integer>();
 				int count = 0;
@@ -170,8 +198,8 @@ public class Query {
 					matcher = Pattern.compile("([A-Za-z]+)").matcher(text);
 					L.clear();
 
-					for (String[] sa : p.offset) {
-						for (String s : sa) {
+					for (word w : p.wordsets) {
+						for (String s : w.offset) {
 							int f = Integer.parseInt(s);
 							if (L.size() == 0)
 								L.add(f);
@@ -197,10 +225,11 @@ public class Query {
 					}
 					System.out.println("");
 				}
-				System.out.println("Output Time: " + (System.currentTimeMillis() - t1));
+				System.out.println("Output Time: "
+						+ (System.currentTimeMillis() - t1));
 				System.out.print("Query> ");
-			} 
-			
+			}
+
 			// Finalize and close connection to Hbase
 			admin.close();
 			connection.close();
