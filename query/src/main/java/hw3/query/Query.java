@@ -95,7 +95,7 @@ public class Query {
 						Bytes.toString(result.getValue("pr".getBytes(), null)));
 
 			}
-			System.out.println("Time: " + (System.currentTimeMillis() - t1));
+			//System.out.println("Time: " + (System.currentTimeMillis() - t1));
 
 			BufferedReader br = new BufferedReader(new FileReader("N.txt"));
 			long N = Long.parseLong(br.readLine().trim());
@@ -109,7 +109,7 @@ public class Query {
 			String[] tmp;
 			HashMap<String, page> H = new HashMap<String, page>();
 			// query = args[0];
-			System.out.print("Query> ");
+			System.out.print("Query> \n");
 			while ((query = in.readLine()) != null && query.length() != 0) {
 
 				q = query.split(" ");
