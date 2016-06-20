@@ -11,8 +11,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.hbase.Cell;
-import org.apache.hadoop.hbase.CellUtil;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Admin;
@@ -67,20 +65,20 @@ public class Query {
 			connection = ConnectionFactory.createConnection(conf);
 			admin = connection.getAdmin();
 
-			// HTable invidx = new HTable(conf, args[0]);
-			// HTable pagerank = new HTable(conf, args[1]);
 			Table invidx = connection.getTable(TableName
 					.valueOf("s104062587:invidx"));
 			Table pagerank = connection.getTable(TableName
 					.valueOf("s104062587:pagerank"));
 			Table ids2title = connection.getTable(TableName
 					.valueOf("s104062587:ids2title"));
-			Table title2ids = connection.getTable(TableName
-					.valueOf("s104062587:title2ids"));
+			// Table title2ids =
+			// connection.getTable(TableName.valueOf("s104062587:title2ids"));
 			Table preprocess = connection.getTable(TableName
 					.valueOf("s104062587:preprocess"));
-			HashMap<String, String> id2t = new HashMap<String, String>(100000,(float) 0.75);
-			HashMap<String, String> PR = new HashMap<String, String>(100000,(float) 0.75);
+			HashMap<String, String> id2t = new HashMap<String, String>(100000,
+					(float) 0.75);
+			HashMap<String, String> PR = new HashMap<String, String>(100000,
+					(float) 0.75);
 			Scan allscan = new Scan();
 			ResultScanner ss = ids2title.getScanner(allscan);
 			long t1 = System.currentTimeMillis();
@@ -93,17 +91,12 @@ public class Query {
 			ss = pagerank.getScanner(allscan);
 			for (Result result = ss.next(); (result != null); result = ss
 					.next()) {
-				PR.put(Bytes.toString(result.getRow()), Bytes.toString(result
-						.getValue("pr".getBytes(), null)));
+				PR.put(Bytes.toString(result.getRow()),
+						Bytes.toString(result.getValue("pr".getBytes(), null)));
 
 			}
 			System.out.println("Time: " + (System.currentTimeMillis() - t1));
-			/*
-			 * invidx = new HTable(conf, "s104062587:100M"); HTable pagerank =
-			 * new HTable(conf, "s104062587:pageransk"); HTable ids2title = new
-			 * HTable(conf, "s104062587:ids2title"); HTable title2ids = new
-			 * HTable(conf, "s104062587:title2ids");
-			 */
+
 			BufferedReader br = new BufferedReader(new FileReader("N.txt"));
 			long N = Long.parseLong(br.readLine().trim());
 			br.close();
@@ -116,13 +109,13 @@ public class Query {
 			String[] tmp;
 			HashMap<String, page> H = new HashMap<String, page>();
 			// query = args[0];
+			System.out.print("Query>");
 			while ((query = in.readLine()) != null && query.length() != 0) {
 
 				q = query.split(" ");
 				Result result;
 				for (String s : q) {
-					System.out.println("Qury for "+s);
-					t1 = System.currentTimeMillis();
+
 					result = invidx.get(new Get(s.getBytes()));
 					df = Integer.parseInt(Bytes.toString(result.getValue(
 							Bytes.toBytes("df"), null)));
@@ -134,7 +127,6 @@ public class Query {
 
 						tmp = i.split(":");
 						String tmpTitle = id2t.get(tmp[0]);
-								//Bytes.toString(ids2title.get(new Get(Bytes.toBytes(tmp[0]))).getValue(Bytes.toBytes("title"), null));
 						if (H.containsKey(tmpTitle)) {
 							page p = H.get(tmpTitle);
 							p.offset.add(tmp[2].split(" "));
@@ -148,23 +140,19 @@ public class Query {
 											* Math.log10(N / df)));
 						}
 					}
-					System.out.println("Qury takes Time: " + (System.currentTimeMillis() - t1));
-					// H.put(s, invidx.get(new Get(Bytes.toBytes(s))));
+
 				}
-				t1 = System.currentTimeMillis();
+
 				for (page p : H.values()) {
-					p.tfdf = p.tfdf
-							* Double.parseDouble(PR.get(p.title));
-									//Bytes.toString(pagerank.get(new Get(Bytes.toBytes(p.title))).getValue("pr".getBytes(), null)));
+					p.tfdf = p.tfdf * Double.parseDouble(PR.get(p.title));
 				}
-				System.out.println("Page Rank takes Time: " + (System.currentTimeMillis() - t1));
-				t1 = System.currentTimeMillis();
+
 				ArrayList<page> valuesList = new ArrayList<page>(H.values());
 				Collections.sort(valuesList);
 				Matcher matcher;
 				LinkedList<Integer> L = new LinkedList<Integer>();
 				int count = 0;
-				
+
 				for (int j = 0; j < 10 && j < valuesList.size(); j++) {
 					page p = valuesList.get(j);
 					System.out.println("No." + (j + 1) + " : " + p.title
@@ -191,12 +179,13 @@ public class Query {
 							count++;
 						}
 						int st = matcher.start();
-						System.out.println(st + " : "
+						System.out.println("\t" + st + " : "
 								+ text.substring(st, st + 50));
 					}
+					System.out.println("");
 				}
-				System.out.println("Print takes Time: " + (System.currentTimeMillis() - t1));
 
+				System.out.print("Query>");
 			}
 
 			// Finalize and close connection to Hbase
