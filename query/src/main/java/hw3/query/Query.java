@@ -195,12 +195,11 @@ public class Query {
 				//t1 = System.currentTimeMillis();
 				ArrayList<page> valuesList = new ArrayList<page>(H.values());
 				Collections.sort(valuesList);
-				System.out.println("Sorting Time: "
-						+ (System.currentTimeMillis() - t1));
+				//System.out.println("Sorting Time: "	+ (System.currentTimeMillis() - t1));
 				Matcher matcher;
 				LinkedList<Integer> L = new LinkedList<Integer>();
 				int count = 0;
-				t1 = System.currentTimeMillis();
+				//t1 = System.currentTimeMillis();
 				for (int j = 0; j < 10 && j < valuesList.size(); j++) {
 					page p = valuesList.get(j);
 					System.out.println("No." + (j + 1) + " : " + p.title
