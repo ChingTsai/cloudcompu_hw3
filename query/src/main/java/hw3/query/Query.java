@@ -95,7 +95,7 @@ public class Query {
 						Bytes.toString(result.getValue("pr".getBytes(), null)));
 
 			}
-			//System.out.println("Time: " + (System.currentTimeMillis() - t1));
+			System.out.println("Prebuild Time: " + (System.currentTimeMillis() - t1));
 
 			BufferedReader br = new BufferedReader(new FileReader("N.txt"));
 			long N = Long.parseLong(br.readLine().trim());
@@ -110,6 +110,7 @@ public class Query {
 			HashMap<String, page> H = new HashMap<String, page>();
 			// query = args[0];
 			System.out.print("Query> ");
+			t1 = System.currentTimeMillis();
 			while ((query = in.readLine()) != null && query.length() != 0) {
 				System.out.println("");
 				q = query.split(" ");
@@ -142,17 +143,22 @@ public class Query {
 					}
 
 				}
-
+				System.out.println("Query Time: " + (System.currentTimeMillis() - t1));
+				
+				t1 = System.currentTimeMillis();
 				for (page p : H.values()) {
 					p.tfdf = p.tfdf * Double.parseDouble(PR.get(p.title));
 				}
-
+				System.out.println("Get Pagerank Time: " + (System.currentTimeMillis() - t1));
+				
+				t1 = System.currentTimeMillis();
 				ArrayList<page> valuesList = new ArrayList<page>(H.values());
 				Collections.sort(valuesList);
+				System.out.println("Sorting Time: " + (System.currentTimeMillis() - t1));
 				Matcher matcher;
 				LinkedList<Integer> L = new LinkedList<Integer>();
 				int count = 0;
-
+				t1 = System.currentTimeMillis();
 				for (int j = 0; j < 10 && j < valuesList.size(); j++) {
 					page p = valuesList.get(j);
 					System.out.println("No." + (j + 1) + " : " + p.title
@@ -193,7 +199,7 @@ public class Query {
 
 				System.out.print("Query> ");
 			} 
-
+			System.out.println("Output Time: " + (System.currentTimeMillis() - t1));
 			// Finalize and close connection to Hbase
 			admin.close();
 			connection.close();
