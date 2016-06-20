@@ -1,17 +1,4 @@
-disable 's104062587:preprocess'
 disable 's104062587:invidx'
-disable 's104062587:pagerank'
-disable 's104062587:ids2title'
-disable 's104062587:title2ids'
-drop 's104062587:preprocess'
 drop 's104062587:invidx'
-drop 's104062587:pagerank'
-drop 's104062587:ids2title'
-drop 's104062587:title2ids'
-create 's104062587:preprocess','word','text'
 create 's104062587:invidx','word','df','info'
-create 's104062587:pagerank','page','pr'
-create 's104062587:ids2title','id','title'
-create 's104062587:title2ids','title','id'
 exit
-
