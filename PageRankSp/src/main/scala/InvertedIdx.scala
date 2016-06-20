@@ -29,7 +29,7 @@ object InvertedIdx {
     try { hdfs.delete(new Path("Hw3/title2ids"), true) } catch { case _: Throwable => {} }
 
     val lines = sc.textFile(filePath, sc.defaultParallelism * 3)
-
+    val n = lines.count()
     val res = (lines.map(line => {
       val lineXml = scala.xml.XML.loadString(line.toString())
       ((lineXml \ "title").text, ((lineXml \ "revision" \ "text").text));
@@ -45,10 +45,10 @@ object InvertedIdx {
     res.map(x => (x._2._1+"^"+ x._2._2)).saveAsTextFile("Hw3/preprocess");
     res.map(x => (x._1 + "|" + x._2._1)).saveAsTextFile("Hw3/ids2title");
     res.map(x => (x._2._1 + "|" + x._1)).saveAsTextFile("Hw3/title2ids");
-	
+	  
     sc.stop
     val pw = new PrintWriter(new File("Npre.txt"))
-    pw.write(res.count().toString());
+    pw.write(n.toString());
     pw.close
   }
 }
